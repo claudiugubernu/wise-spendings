@@ -67,7 +67,56 @@ export function langTerms($language, $term) {
       term: "Delete",
       lang: {
         en: "Delete",
-        ro: "Sterge",
+        ro: "Șterge",
+      },
+    },
+    {
+      term: "Name",
+      lang: {
+        en: "Name",
+        ro: "Nume",
+      },
+    },
+    {
+      term: "New Budget",
+      lang: {
+        en: "New Budget",
+        ro: "Buget Nou",
+      },
+    },
+    {
+      term: "Maximum Spending",
+      lang: {
+        en: "Maximum Spending",
+        ro: "Buget Maxim",
+      },
+    },
+    {
+      term: "Add",
+      lang: {
+        en: "Add",
+        ro: "Adaugă",
+      },
+    },
+    {
+      term: "New Expense",
+      lang: {
+        en: "New Expense",
+        ro: "Cheltuială Nouă",
+      },
+    },
+    {
+      term: "Description",
+      lang: {
+        en: "Description",
+        ro: "Descriere",
+      },
+    },
+    {
+      term: "Amount",
+      lang: {
+        en: "Amount",
+        ro: "Sumă",
       },
     },
   ];

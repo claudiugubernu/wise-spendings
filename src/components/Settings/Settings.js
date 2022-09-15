@@ -26,7 +26,6 @@ const Settings = () => {
       <div className={open ? "settings-modal open" : "settings-modal"}>
         <div className="modal-header flex justify-between p-20">
           <p className="m-0 fs-30">{langTerms(lang, "Settings")}</p>
-          <p className="m-0 fs-30"></p>
           <IoCloseCircleOutline onClick={onOpen} />
         </div>
         <div className="modal-body">

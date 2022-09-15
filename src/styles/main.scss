@@ -1,10 +1,14 @@
 /* Variables */
 @import "./_variables/variables";
 
-/* components */
+/* Common */
+@import "./common/modal.scss";
+
+/* Components */
 @import "../components/Settings/settings.scss";
 @import "../components/ToggleSwitch/toggle-switch.scss";
 @import "../components/LanguageSwitcher/language-switcher.scss";
 @import "../components/CurrencySwitcher/currency-switcher.scss";
+@import "../components/Button/button.scss";
 
 @import "./app/app.scss";
