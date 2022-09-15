@@ -2,16 +2,19 @@ import { useRef } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import Button from "../Button/Button";
 import { langTerms } from "../../static/langTerms";
-import { useAppContext } from "../../context/AppContext";
+import {
+  useAppContext,
+  UNCATEGORIZED_BUDGET_ID,
+} from "../../context/AppContext";
 
 const AddExpenseModal = ({ show, handleClose }) => {
   const descriptionRef = useRef();
   const amountRef = useRef();
   const budgetIdRef = useRef();
-  const { addExpenses, budgets, lang } = useAppContext();
+  const { addExpense, budgets, lang } = useAppContext();
   const handleSubmit = (e) => {
     e.preventDefault();
-    addExpenses({
+    addExpense({
       description: descriptionRef.current.value,
       amount: parseFloat(amountRef.current.value),
       budgetId: budgetIdRef.current.value,
@@ -43,8 +46,25 @@ const AddExpenseModal = ({ show, handleClose }) => {
               step={0.01}
             />
           </div>
+          <div className="form-row mb-20 flex flex-column v-gap-20">
+            <label htmlFor="budgetId">{langTerms(lang, "Budget")}</label>
+            <select defaultValue={UNCATEGORIZED_BUDGET_ID} ref={budgetIdRef}>
+              <option id={UNCATEGORIZED_BUDGET_ID}>
+                {langTerms(lang, "Uncategorized")}
+              </option>
+              {budgets.map((budget) => (
+                <option key={budget.id} value={budget.id}>
+                  {budget.name}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="flex justify-end mt-50">
-            <Button content={langTerms(lang, "Add")} variant={"btn-primary"} />
+            <Button
+              type={"submit"}
+              content={langTerms(lang, "Add")}
+              variant={"btn-primary"}
+            />
           </div>
         </div>
       </form>

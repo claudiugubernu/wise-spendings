@@ -119,6 +119,20 @@ export function langTerms($language, $term) {
         ro: "Sumă",
       },
     },
+    {
+      term: "Budget",
+      lang: {
+        en: "Budget",
+        ro: "Buget",
+      },
+    },
+    {
+      term: "Uncategorized",
+      lang: {
+        en: "Uncategorized",
+        ro: "Nici o categorie",
+      },
+    },
   ];
   // Filter the array and return the result
   function filterIt(array, value, key) {

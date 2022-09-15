@@ -40,7 +40,11 @@ const AddBudgetModal = ({ show, handleClose }) => {
             />
           </div>
           <div className="flex justify-end mt-50">
-            <Button content={langTerms(lang, "Add")} variant={"btn-primary"} />
+            <Button
+              type={"submit"}
+              content={langTerms(lang, "Add")}
+              variant={"btn-primary"}
+            />
           </div>
         </div>
       </form>
