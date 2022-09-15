@@ -4,7 +4,7 @@ import { useAppContext } from "../../context/AppContext";
 import Button from "../Button/Button";
 import { langTerms } from "../../static/langTerms";
 import AddBudgetModal from "../AddBudgetModal/AddBudgetModal";
-import AddExpenseModal from "../AddExpenseModal/AddExpenseModa";
+import AddExpenseModal from "../AddExpenseModal/AddExpenseModal";
 
 const View = () => {
   const { currency, lang } = useAppContext();
