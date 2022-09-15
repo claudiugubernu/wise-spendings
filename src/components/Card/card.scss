@@ -1,0 +1,15 @@
+.card {
+    border: 1px solid var(--color-primary);
+    padding: 20px 15px;
+    border-radius: 10px;
+
+    .card-header {
+        .card-amounts {
+            align-items: baseline;
+
+            .max-amount {
+                opacity: 0.8;
+            }
+        }
+    }
+}

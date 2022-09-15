@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { currencyFormatter } from "../../utils/utils";
 import { useAppContext } from "../../context/AppContext";
 import Button from "../Button/Button";
 import { langTerms } from "../../static/langTerms";
 import AddBudgetModal from "../AddBudgetModal/AddBudgetModal";
 import AddExpenseModal from "../AddExpenseModal/AddExpenseModal";
+import CardGrid from "../CardGrid/CardGrid";
 
 const View = () => {
-  const { currency, lang } = useAppContext();
+  const { lang } = useAppContext();
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
   const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState();
@@ -34,6 +34,10 @@ const View = () => {
           />
         </div>
       </div>
+      <CardGrid
+        openAddExpenseModal={openAddExpenseModal}
+        setViewExpensesModalBudgetId={setViewExpensesModalBudgetId}
+      />
       <AddBudgetModal
         show={showAddBudgetModal}
         handleClose={() => setShowAddBudgetModal(false)}
@@ -43,8 +47,6 @@ const View = () => {
         defaultBudgetID={addExpenseMOdalBudgetId}
         handleClose={() => setShowAddExpenseModal(false)}
       />
-
-      <div>{currencyFormatter(currency).format(400)}</div>
     </main>
   );
 };

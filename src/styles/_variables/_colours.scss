@@ -23,9 +23,16 @@
 .c-light-grey {
     color: var(--color-light-grey);
 }
+.bg-light {
+    background-color: var(--color-light-grey);
+}
 
 .c-danger {
     color: var(--color-danger);
+}
+
+.bg-danger {
+    background-color: var(--color-danger);
 }
 
 .c-success {
