@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600&display=swap');
+
+:root {
+    --font-family-default: 'Manrope', sans-serif;
+    --font-family-secondary: 'Manrope', sans-serif;
+    --font-size-default: 16px;
+}
+
+p {
+    font-family: var(--font-family-default);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    @extend .fs-16;
+
+    @include sm-up() {
+        @include rs('margin-top', $ss, 30);
+        @include rs('margin-bottom', $ss, 30);
+    }
+}
+
+.ff-1 {
+    font-family: var(--font-family-default);
+}
+
+.ff-2 {
+    font-family: var(--font-family-secondary);
+}
+
+.tt-uppercase {
+    text-transform: uppercase;
+}
+
+.fw-bold {
+    font-weight: 700;
+}
+
+.fw-normal {
+    font-weight: 400;
+}
+
+.fw-light {
+    font-weight: 300;
+}
+
+.fs-16 {
+    font-size: 14px;
+
+    @include sm-up() {
+        @include rs('font-size', $fs, 16);
+    }
+}
+
+.fs-20 {
+    font-size: 20px;
+
+    @include sm-up() {
+        @include rs('font-size', $fs, 20);
+    }
+}
+
+.fs-30 {
+    font-size: 30px;
+
+    @include sm-up() {
+        @include rs('font-size', $fs, 30);
+    }
+}
+
+.fs-50 {
+    font-size: 30px;
+
+    @include sm-up() {
+        @include rs('font-size', $fs, 50);
+    }
+}

@@ -1,0 +1,34 @@
+@each $size in $gap {
+    .gap-#{$size} {
+        > * {
+            @include rs("margin-right", $ss, $size);
+        }
+
+        &:not(.flex-row-reverse) {
+            > *:last-child {
+                margin-right: 0px;
+            }
+        }
+
+        &.flex-row-reverse {
+            > *:first-child {
+                margin: 0px;
+            }
+        }
+    }
+}
+
+@include sm-down() {
+    @each $size in $gap {
+        .m-gap-#{$size} {
+            > * {
+                margin-right: 0px;
+                margin-bottom: $size + px;
+
+                &:last-child {
+                    margin: 0px;
+                }
+            }
+        }
+    }
+}

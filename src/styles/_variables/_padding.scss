@@ -1,0 +1,108 @@
+/* Padding Overall */
+@each $size in $padding {
+    .p-#{$size} {
+        @include rs("padding", $ss, $size);
+    }
+}
+
+@include sm-down() {
+    @each $size in $padding {
+        .m-p-#{$size} {
+            padding: $size + px;
+        }
+    } 
+}
+
+/* Padding Horizontal */
+@each $size in $padding {
+    .ph-#{$size} {
+        @include rs("padding-right", $ss, $size);
+        @include rs("padding-left", $ss, $size);
+    }
+}
+
+@include sm-down() {
+    @each $size in $padding {
+        .m-ph-#{$size} {
+            padding-left: $size + px;
+            padding-right: $size + px;
+        }
+    } 
+}
+
+/* Padding Vertical */
+@each $size in $padding {
+    .pv-#{$size} {
+        @include rs("padding-top", $ss, $size);
+        @include rs("padding-bottom", $ss, $size);
+    }
+}
+
+@include sm-down() {
+    @each $size in $padding {
+        .m-pv-#{$size} {
+            padding-top: $size + px;
+            padding-bottom: $size + px;
+        }
+    } 
+}
+
+/* Padding Top */
+@each $size in $padding {
+    .pt-#{$size} {
+        @include rs("padding-top", $ss, $size);
+    }
+}
+
+@include sm-down() {
+    @each $size in $padding {
+        .m-pt-#{$size} {
+            padding-top: $size + px;
+        }
+    } 
+}
+
+/* Padding Right */
+@each $size in $padding {
+    .pr-#{$size} {
+        @include rs("padding-right", $ss, $size);
+    }
+}
+
+@include sm-down() {
+    @each $size in $padding {
+        .m-pt-#{$size} {
+            padding-right: $size + px;
+        }
+    } 
+}
+
+/* Padding Bottom */
+@each $size in $padding {
+    .pb-#{$size} {
+        @include rs("padding-bottom", $ss, $size);
+    }
+}
+
+@include sm-down() {
+    @each $size in $padding {
+        .m-pt-#{$size} {
+            padding-bottom: $size + px;
+        }
+    } 
+}
+
+/* Padding Left */
+@each $size in $padding {
+    .pl-#{$size} {
+        @include rs("padding-left", $ss, $size);
+    }
+}
+
+@include sm-down() {
+    @each $size in $padding {
+        .m-pt-#{$size} {
+            padding-left: $size + px;
+        }
+    } 
+}

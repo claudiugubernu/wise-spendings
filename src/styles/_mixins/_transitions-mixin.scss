@@ -1,0 +1,6 @@
+@mixin transition($for: all, $time-in: 400ms, $type: ease-in) {
+    transition: $for $time-in $type;
+    -moz-transition: $for $time-in $type;
+    -webkit-transition: $for $time-in $type;
+    -o-transition: $for $time-in $type;
+}

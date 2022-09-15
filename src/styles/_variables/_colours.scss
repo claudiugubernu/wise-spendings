@@ -1,0 +1,32 @@
+:root {
+    --color-white: #fff;
+    --color-white-faded: rgb(255, 255, 255, 0.8);
+    --color-black: #000;
+    --color-light-grey: #f5f5f5;
+    --color-dark-grey: #a5a5a5;
+    --color-dark: #171f26;
+    
+    --color-danger: #e74545;
+    --color-success: #28a745;
+    --color-select: #42a5f5;
+
+    --color-primary: #1A743E;
+    --color-secondary: #f1f2f4;
+}
+
+.c-white {
+    color: var(--color-white);
+}
+
+.c-light-grey {
+    color: var(--color-light-grey);
+}
+
+.c-danger {
+    color: var(--color-danger);
+}
+
+.c-success {
+    color: var(--color-success);
+}
+

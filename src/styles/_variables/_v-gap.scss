@@ -1,0 +1,33 @@
+@each $size in $vgap {
+    .v-gap-#{$size} {
+        > * {
+            @include rs("margin-bottom", $ss, $size);
+        }
+
+        &:not(.flex-row-reverse) {
+            > *:last-child {
+                margin: 0px;
+            }
+        }
+
+        &.flex-row-reverse {
+            > *:first-child {
+                margin: 0px;
+            }
+        }
+    }
+}
+
+@include sm-down() {
+    @each $size in $gap {
+        .m-v-gap-#{$size} {
+            > * {
+                margin-bottom: $size + px;
+
+                &:last-child {
+                    margin: 0px;
+                }
+            }
+        }
+    }
+}

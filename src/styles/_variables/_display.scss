@@ -1,0 +1,7 @@
+$types: flex, block, grid, none;
+
+@each $type in $types {
+    .#{$type} {
+        display: $type;
+    }
+}

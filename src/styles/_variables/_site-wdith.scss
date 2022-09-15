@@ -1,0 +1,15 @@
+:root {
+    --site-width-margin: 35;
+}
+
+.site-width {
+    margin: 0 auto;
+    max-width: 920px;
+    @include rs("padding-left", $ss, $site-width-margin);
+    @include rs("padding-right", $ss, $site-width-margin);
+
+    @include sm-down() {
+        padding-left: $m-site-width-margin + #{px};
+        padding-right: $m-site-width-margin + #{px};
+    }
+}

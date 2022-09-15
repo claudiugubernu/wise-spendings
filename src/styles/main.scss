@@ -1,0 +1,10 @@
+/* Variables */
+@import "./_variables/variables";
+
+/* components */
+@import "../components/Settings/settings.scss";
+@import "../components/ToggleSwitch/toggle-switch.scss";
+@import "../components/LanguageSwitcher/language-switcher.scss";
+@import "../components/CurrencySwitcher/currency-switcher.scss";
+
+@import "./app/app.scss";

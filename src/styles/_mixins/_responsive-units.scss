@@ -1,0 +1,25 @@
+@use "sass:math";
+
+@function strip-units($number) {
+  @return math.div($number, ($number * 0 + 1));
+}
+
+@function calculateRem($size) {
+  $remSize: math.div($size, 16);
+  @return #{$remSize}rem;
+}
+
+@function calculateClamp($minimum, $preferred, $maximum, $preferred_viewport_width: 1920px) {
+  $clamp_parameter_1: calculateRem($minimum * $preferred);
+  $clamp_parameter_2: strip-units(math.div(($preferred + 0), $preferred_viewport_width) * 100) * 1vw;
+  $clamp_parameter_3: calculateRem($maximum);
+
+  @return clamp(#{$clamp_parameter_1}, #{$clamp_parameter_2}, #{$clamp_parameter_3});
+}
+
+@mixin rs($unit, $minimum, $preferred, $maximum: $preferred, $preferred_viewport_width: 1920px) {
+  /* Fallback for IE11 */
+  #{$unit}: calculateRem($preferred);
+  /* Modern browsers */
+  #{$unit}: calculateClamp($minimum, $preferred, $maximum, $preferred_viewport_width);
+}

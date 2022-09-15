@@ -1,0 +1,15 @@
+.language-switcher {
+    select {
+        background-color: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+    }
+}
+
+#dark-theme .language-switcher {
+    select {
+        color: var(--color-secondary);
+    }
+}

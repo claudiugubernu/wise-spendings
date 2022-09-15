@@ -1,0 +1,14 @@
+/* Width in % */
+@each $size in $width {
+    .w-#{$size} {
+        width: $size + #{"%"};
+    }
+}
+
+@include sm-down() {
+    @each $size in $width {
+        .m-w-#{$size} {
+            width: $size + #{"%"};
+        }
+    }
+}
