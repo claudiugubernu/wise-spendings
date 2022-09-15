@@ -35,6 +35,41 @@ export function langTerms($language, $term) {
         ro: "Valută",
       },
     },
+    {
+      term: "Add Budget",
+      lang: {
+        en: "Add Budget",
+        ro: "Adaugă Buget",
+      },
+    },
+    {
+      term: "Add Expense",
+      lang: {
+        en: "Add Expense",
+        ro: "Adaugă Cheltuială",
+      },
+    },
+    {
+      term: "View Expenses",
+      lang: {
+        en: "View Expenses",
+        ro: "Vezi Cheltuieli",
+      },
+    },
+    {
+      term: "Expenses",
+      lang: {
+        en: "Expenses",
+        ro: "Cheltuieli",
+      },
+    },
+    {
+      term: "Delete",
+      lang: {
+        en: "Delete",
+        ro: "Sterge",
+      },
+    },
   ];
   // Filter the array and return the result
   function filterIt(array, value, key) {
