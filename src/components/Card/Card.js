@@ -8,18 +8,21 @@ const Card = ({
   name,
   amount,
   max,
-  gray,
+  green,
   hideButtons,
   onAddExpenseClick,
   onViewExpensesClick,
   lang,
+  isDark,
 }) => {
   const classNames = [];
   // Set clases for cardBackground
   if (amount > max) {
     classNames.push("bg-danger", "bg-opacity-10");
-  } else if (gray) {
-    classNames.push("bg-light");
+  } else if (green) {
+    isDark
+      ? classNames.push("bg-primary c-white")
+      : classNames.push("bg-primary");
   }
 
   return (

@@ -29,6 +29,7 @@
         max-width: 350px;
         padding: 15px 10px;
         background-color: var(--color-white);
+        z-index: 50;
 
         &.open {
             opacity: 1;

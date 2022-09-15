@@ -1,5 +1,6 @@
 import Card from "../Card/Card";
 import { useAppContext } from "../../context/AppContext";
+import TotalBudgetCard from "../TotalBudgetCard/TotalBudgetCard";
 
 const CardGrid = ({ openAddExpenseModal, setViewExpensesModalBudgetId }) => {
   const { budgets, getBudgetExpenses, currency, lang } = useAppContext();
@@ -23,6 +24,7 @@ const CardGrid = ({ openAddExpenseModal, setViewExpensesModalBudgetId }) => {
           />
         );
       })}
+      <TotalBudgetCard />
     </div>
   );
 };

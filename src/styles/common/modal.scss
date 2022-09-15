@@ -12,7 +12,7 @@
     max-width: 350px;
     padding: 15px 25px;
     background-color: var(--color-white);
-    
+    z-index: 50;
 
     &.show {
         opacity: 1;
