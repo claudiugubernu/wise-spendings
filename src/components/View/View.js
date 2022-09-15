@@ -5,6 +5,7 @@ import { langTerms } from "../../static/langTerms";
 import AddBudgetModal from "../AddBudgetModal/AddBudgetModal";
 import AddExpenseModal from "../AddExpenseModal/AddExpenseModal";
 import CardGrid from "../CardGrid/CardGrid";
+import ViewExpensesModal from "../ViewExpensesModal/ViewExpensesModal";
 
 const View = () => {
   const { lang } = useAppContext();
@@ -46,6 +47,10 @@ const View = () => {
         show={showAddExpenseModal}
         defaultBudgetID={addExpenseMOdalBudgetId}
         handleClose={() => setShowAddExpenseModal(false)}
+      />
+      <ViewExpensesModal
+        budgetId={viewExpensesModalBudgetId}
+        handleClose={() => setViewExpensesModalBudgetId()}
       />
     </main>
   );
