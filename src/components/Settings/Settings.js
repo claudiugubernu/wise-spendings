@@ -5,6 +5,7 @@ import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 import CurrencySwitcher from "../CurrencySwitcher/CurrencySwitcher";
 import { useAppContext } from "../../context/AppContext";
+import { langTerms } from "../../static/langTerms";
 
 const Settings = () => {
   const { lang } = useAppContext();
@@ -24,7 +25,8 @@ const Settings = () => {
       </div>
       <div className={open ? "settings-modal open" : "settings-modal"}>
         <div className="modal-header flex justify-between p-20">
-          <p className="m-0 fs-30">{lang === "en" ? "Settings" : "Setări"}</p>
+          <p className="m-0 fs-30">{langTerms(lang, "Settings")}</p>
+          <p className="m-0 fs-30"></p>
           <IoCloseCircleOutline onClick={onOpen} />
         </div>
         <div className="modal-body">

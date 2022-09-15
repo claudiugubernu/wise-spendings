@@ -1,4 +1,5 @@
 import { useAppContext } from "../../context/AppContext";
+import { langTerms } from "../../static/langTerms";
 
 const LanguageSwitcher = () => {
   const { onSetLang, lang } = useAppContext();
@@ -8,8 +9,8 @@ const LanguageSwitcher = () => {
         {lang === "en" ? "Language:" : "Limbă:"}
       </label>
       <select id="language" value={lang} onChange={onSetLang}>
-        <option value="en">{lang === "en" ? "English" : "Engleză"}</option>
-        <option value="ro">{lang === "en" ? "Romanian" : "Română"}</option>
+        <option value="en">{langTerms(lang, "English")}</option>
+        <option value="ro">{langTerms(lang, "Romanian")}</option>
       </select>
     </div>
   );

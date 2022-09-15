@@ -1,5 +1,6 @@
 import React from "react";
 import { useAppContext } from "../../context/AppContext";
+import { langTerms } from "../../static/langTerms";
 
 const CurrencySwitcher = () => {
   const { lang, onSetCurrency, currency } = useAppContext();
@@ -7,7 +8,7 @@ const CurrencySwitcher = () => {
   return (
     <div className="currency-switcher p-20 flex justify-between align-items-center gap-20">
       <label htmlFor="currency" className="fs-20">
-        {lang === "en" ? "Currency:" : "Valută:"}
+        {langTerms(lang, "Currency")}
       </label>
       <select id="currency" onChange={onSetCurrency} value={currency}>
         <option value="gbp" defaultValue>
