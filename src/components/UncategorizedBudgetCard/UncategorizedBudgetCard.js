@@ -3,9 +3,10 @@ import {
   useAppContext,
 } from "../../context/AppContext";
 import Card from "../Card/Card";
+import { langTerms } from "../../static/langTerms";
 
 const UncategorizedBudgetCard = (props) => {
-  const { getBudgetExpenses, currency } = useAppContext();
+  const { getBudgetExpenses, currency, lang } = useAppContext();
   const amount = getBudgetExpenses(UNCATEGORIZED_BUDGET_ID).reduce(
     (total, expense) => total + expense.amount,
     0
@@ -14,7 +15,13 @@ const UncategorizedBudgetCard = (props) => {
   if (amount === 0) return null;
 
   return (
-    <Card amount={amount} currency={currency} name="Uncategorized" {...props} />
+    <Card
+      amount={amount}
+      currency={currency}
+      name={langTerms(lang, "Uncategorized")}
+      lang={lang}
+      {...props}
+    />
   );
 };
 
