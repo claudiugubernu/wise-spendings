@@ -40,9 +40,12 @@ const AppProvider = ({ children }) => {
   };
 
   // Add Expense
-  const addExpense = ({ description, amount, budgetId }) => {
+  const addExpense = ({ description, date, amount, budgetId }) => {
     setExpenses((prevExpenses) => {
-      return [...prevExpenses, { id: uuidV4(), description, amount, budgetId }];
+      return [
+        ...prevExpenses,
+        { id: uuidV4(), description, date, amount, budgetId },
+      ];
     });
   };
 

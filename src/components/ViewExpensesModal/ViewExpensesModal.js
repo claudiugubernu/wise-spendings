@@ -54,6 +54,7 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
             key={expense.id}
           >
             <p className="m-0">{expense.description}</p>
+            <p className="m-0">{expense.date}</p>
             <p className="m-0">
               {currencyFormatter(currency).format(expense.amount)}
             </p>

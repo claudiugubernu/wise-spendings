@@ -12,12 +12,14 @@ const AddExpenseModal = ({ show, handleClose, defaultBudgetID }) => {
   const descriptionRef = useRef();
   const amountRef = useRef();
   const budgetIdRef = useRef();
+  const dateRef = useRef();
   const { addExpense, budgets, lang } = useAppContext();
   const handleSubmit = (e) => {
     e.preventDefault();
     addExpense({
       description: descriptionRef.current.value,
       amount: parseFloat(amountRef.current.value),
+      date: dateRef.current.value,
       budgetId: budgetIdRef.current.value,
     });
     formRef.current.reset();
@@ -36,6 +38,10 @@ const AddExpenseModal = ({ show, handleClose, defaultBudgetID }) => {
               {langTerms(lang, "Description")}
             </label>
             <input type="text" id="description" ref={descriptionRef} required />
+          </div>
+          <div className="form-row mb-20 flex flex-column v-gap-20">
+            <label htmlFor="date">{langTerms(lang, "Date")}</label>
+            <input type="date" id="date" ref={dateRef} required />
           </div>
           <div className="form-row mb-20 flex flex-column v-gap-20">
             <label htmlFor="amount">{langTerms(lang, "Amount")}</label>

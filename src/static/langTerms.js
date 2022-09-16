@@ -133,6 +133,13 @@ export function langTerms($language, $term) {
         ro: "Nici o categorie",
       },
     },
+    {
+      term: "Date",
+      lang: {
+        en: "Date",
+        ro: "Dată",
+      },
+    },
   ];
   // Filter the array and return the result
   function filterIt(array, value, key) {
