@@ -5,6 +5,7 @@ import { langTerms } from "../../static/langTerms";
 import { useAppContext } from "../../context/AppContext";
 
 const AddBudgetModal = ({ show, handleClose }) => {
+  const formRef = useRef();
   const nameRef = useRef();
   const maxRef = useRef();
   const { addBudget, lang } = useAppContext();
@@ -14,11 +15,12 @@ const AddBudgetModal = ({ show, handleClose }) => {
       name: nameRef.current.value,
       max: parseFloat(maxRef.current.value),
     });
+    formRef.current.reset();
     handleClose();
   };
   return (
     <div className={show ? "modal show" : "modal"}>
-      <form onSubmit={handleSubmit}>
+      <form ref={formRef} onSubmit={handleSubmit}>
         <div className="modal-header flex justify-between align-items-center mv-20">
           <label className="fs-30">{langTerms(lang, "New Budget")}</label>
           <IoCloseCircleOutline onClick={handleClose} />

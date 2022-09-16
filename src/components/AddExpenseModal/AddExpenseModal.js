@@ -7,7 +7,8 @@ import {
   UNCATEGORIZED_BUDGET_ID,
 } from "../../context/AppContext";
 
-const AddExpenseModal = ({ show, handleClose }) => {
+const AddExpenseModal = ({ show, handleClose, defaultBudgetID }) => {
+  const formRef = useRef();
   const descriptionRef = useRef();
   const amountRef = useRef();
   const budgetIdRef = useRef();
@@ -19,11 +20,12 @@ const AddExpenseModal = ({ show, handleClose }) => {
       amount: parseFloat(amountRef.current.value),
       budgetId: budgetIdRef.current.value,
     });
+    formRef.current.reset();
     handleClose();
   };
   return (
     <div className={show ? "modal show" : "modal"}>
-      <form onSubmit={handleSubmit}>
+      <form ref={formRef} onSubmit={handleSubmit}>
         <div className="modal-header flex justify-between align-items-center mv-20">
           <label className="fs-30">{langTerms(lang, "New Expense")}</label>
           <IoCloseCircleOutline onClick={handleClose} />
@@ -48,7 +50,7 @@ const AddExpenseModal = ({ show, handleClose }) => {
           </div>
           <div className="form-row mb-20 flex flex-column v-gap-20">
             <label htmlFor="budgetId">{langTerms(lang, "Budget")}</label>
-            <select defaultValue={UNCATEGORIZED_BUDGET_ID} ref={budgetIdRef}>
+            <select defaultValue={defaultBudgetID} ref={budgetIdRef}>
               <option id={UNCATEGORIZED_BUDGET_ID}>
                 {langTerms(lang, "Uncategorized")}
               </option>

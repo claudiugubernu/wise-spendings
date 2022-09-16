@@ -5,7 +5,7 @@ import {
 import Card from "../Card/Card";
 
 const UncategorizedBudgetCard = (props) => {
-  const { getBudgetExpenses } = useAppContext();
+  const { getBudgetExpenses, currency } = useAppContext();
   const amount = getBudgetExpenses(UNCATEGORIZED_BUDGET_ID).reduce(
     (total, expense) => total + expense.amount,
     0
@@ -13,7 +13,9 @@ const UncategorizedBudgetCard = (props) => {
 
   if (amount === 0) return null;
 
-  return <Card amount={amount} name="Uncategorized" gray {...props} />;
+  return (
+    <Card amount={amount} currency={currency} name="Uncategorized" {...props} />
+  );
 };
 
 export default UncategorizedBudgetCard;

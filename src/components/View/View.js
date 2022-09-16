@@ -12,7 +12,7 @@ const View = () => {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
   const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState();
-  const [addExpenseMOdalBudgetId, setAddExpenseModalBudgetId] = useState();
+  const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState();
 
   const openAddExpenseModal = (budgetId) => {
     setShowAddExpenseModal(true);
@@ -45,7 +45,7 @@ const View = () => {
       />
       <AddExpenseModal
         show={showAddExpenseModal}
-        defaultBudgetID={addExpenseMOdalBudgetId}
+        defaultBudgetID={addExpenseModalBudgetId}
         handleClose={() => setShowAddExpenseModal(false)}
       />
       <ViewExpensesModal
