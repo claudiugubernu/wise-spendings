@@ -1,3 +1,7 @@
 .App {
     padding-bottom: 100px;
+
+    @include sm-down() {
+        padding-bottom: 50px;
+    }
 }

@@ -34,6 +34,10 @@ const Settings = () => {
           <CurrencySwitcher />
         </div>
       </div>
+      <div
+        className={open ? "overlay active" : "overlay"}
+        onClick={onOpen}
+      ></div>
     </div>
   );
 };

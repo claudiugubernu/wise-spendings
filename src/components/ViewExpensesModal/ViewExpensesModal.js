@@ -27,46 +27,52 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
         }
       : budgets.find((budget) => budget.id === budgetId);
   return (
-    <div className={budgetId != null ? "modal show" : "modal"}>
-      <div className="modal-header flex justify-between align-items-center mv-20">
-        <label className="">
-          {langTerms(lang, "Expenses")} -{budget?.name}
-        </label>
-        {budgetId !== UNCATEGORIZED_BUDGET_ID && (
-          <div
-            onClick={() => {
-              deleteBudget(budget);
-              handleClose();
-            }}
-          >
-            <Button
-              content={langTerms(lang, "Delete")}
-              variant="btn-outline-danger"
-            />
-          </div>
-        )}
-        <IoCloseCircleOutline onClick={handleClose} />
-      </div>
-      <div className="modal-body">
-        {expenses.map((expense) => (
-          <div
-            className="flex justify-between align-items-center mv-20 m-mv-20"
-            key={expense.id}
-          >
-            <p className="m-0">{expense.description}</p>
-            <p className="m-0">
-              {new Date(expense.date).toLocaleDateString("en-GB")}
-            </p>
-            <p className="m-0">
-              {currencyFormatter(currency).format(expense.amount)}
-            </p>
-            <div onClick={() => deleteExpense(expense)}>
-              <Button content={"x"} variant="btn-outline-danger" />
+    <>
+      <div className={budgetId != null ? "modal show" : "modal"}>
+        <div className="modal-header flex justify-between align-items-center mv-20">
+          <label className="">
+            {langTerms(lang, "Expenses")} -{budget?.name}
+          </label>
+          {budgetId !== UNCATEGORIZED_BUDGET_ID && (
+            <div
+              onClick={() => {
+                deleteBudget(budget);
+                handleClose();
+              }}
+            >
+              <Button
+                content={langTerms(lang, "Delete")}
+                variant="btn-outline-danger"
+              />
             </div>
-          </div>
-        ))}
+          )}
+          <IoCloseCircleOutline onClick={handleClose} />
+        </div>
+        <div className="modal-body">
+          {expenses.map((expense) => (
+            <div
+              className="flex justify-between align-items-center mv-20 m-mv-20"
+              key={expense.id}
+            >
+              <p className="m-0">{expense.description}</p>
+              <p className="m-0">
+                {new Date(expense.date).toLocaleDateString("en-GB")}
+              </p>
+              <p className="m-0">
+                {currencyFormatter(currency).format(expense.amount)}
+              </p>
+              <div onClick={() => deleteExpense(expense)}>
+                <Button content={"x"} variant="btn-outline-danger" />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+      <div
+        className={budgetId != null ? "overlay active" : "overlay"}
+        onClick={handleClose}
+      ></div>
+    </>
   );
 };
 
