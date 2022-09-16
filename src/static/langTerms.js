@@ -130,7 +130,7 @@ export function langTerms($language, $term) {
       term: "Uncategorized",
       lang: {
         en: "Uncategorized",
-        ro: "Nici o categorie",
+        ro: "Fără categorie",
       },
     },
     {
