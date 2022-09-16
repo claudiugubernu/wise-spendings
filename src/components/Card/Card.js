@@ -52,7 +52,7 @@ const Card = ({
         )}
         {!hideButtons && (
           <div className="flex m-flex-column gap-20 m-gap-0 m-v-gap-20 mt-30">
-            <div onClick={() => onAddExpenseClick(true)}>
+            <div onClick={onAddExpenseClick}>
               <Button
                 content={langTerms(lang, "Add Expense")}
                 variant={"btn-primary m-w-100"}

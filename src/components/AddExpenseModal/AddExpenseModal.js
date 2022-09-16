@@ -50,7 +50,7 @@ const AddExpenseModal = ({ show, handleClose, defaultBudgetID }) => {
           </div>
           <div className="form-row mb-20 flex flex-column v-gap-20">
             <label htmlFor="budgetId">{langTerms(lang, "Budget")}</label>
-            <select defaultValue={defaultBudgetID} ref={budgetIdRef}>
+            <select value={defaultBudgetID} ref={budgetIdRef}>
               <option id={UNCATEGORIZED_BUDGET_ID}>
                 {langTerms(lang, "Uncategorized")}
               </option>
