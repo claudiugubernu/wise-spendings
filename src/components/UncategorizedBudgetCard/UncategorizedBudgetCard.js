@@ -16,11 +16,11 @@ const UncategorizedBudgetCard = (props) => {
 
   return (
     <Card
-      {...props}
       amount={amount}
       currency={currency}
       name={langTerms(lang, "Uncategorized")}
       lang={lang}
+      {...props}
     />
   );
 };
