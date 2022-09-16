@@ -1,4 +1,6 @@
-# Coming soon...
+# Wise Spendings
+
+Your smart budget app companion.
 
 ## Installation
 
