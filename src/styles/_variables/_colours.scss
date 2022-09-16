@@ -6,9 +6,10 @@
     --color-dark-grey: #a5a5a5;
     --color-dark: #171f26;
     
-    --color-danger: #e74545;
-    --color-success: #28a745;
-    --color-select: #42a5f5;
+    --color-danger: #DD3444;
+    --color-success: #28A745;
+    --color-select: #037BFE;
+    --color-warning: #FFC007;
 
     --color-primary: #1A743E;
     --color-primary-hover: #13572e;
@@ -29,6 +30,14 @@
 
 .c-danger {
     color: var(--color-danger);
+}
+
+.bg-safe {
+    background-color: var(--color-select);
+}
+
+.bg-warning {
+    background-color: var(--color-warning);
 }
 
 .bg-danger {

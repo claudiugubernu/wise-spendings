@@ -28,7 +28,7 @@ const Card = ({
   return (
     <div className={`card ${classNames.join(" ")}`}>
       <div className="card-header flex justify-between">
-        <p className="title fs-20 mb-10 m-mb-10 mt-0">{name}</p>
+        <p className="title fs-20 m-0">{name}</p>
         <div className="card-amounts flex">
           <p className="m-0 fs-20">
             {currencyFormatter(currency).format(amount)}
@@ -45,9 +45,7 @@ const Card = ({
         {max && (
           <ProgressBar
             variant={getProgressBarVariant(amount, max)}
-            min={0}
-            max={max}
-            now={amount}
+            progress={calculateProgress(amount, max)}
           />
         )}
         {!hideButtons && (
@@ -71,11 +69,15 @@ const Card = ({
   );
 };
 
+const calculateProgress = (amount, max) => {
+  return (amount / max) * 100;
+};
+
 const getProgressBarVariant = (amount, max) => {
   const ratio = amount / max;
-  if (ratio < 0.5) return "primary";
-  if (ratio < 0.75) return "warning";
-  return "danger";
+  if (ratio < 0.5) return "bg-safe";
+  if (ratio < 0.75) return "bg-warning";
+  return "bg-danger";
 };
 
 export default Card;

@@ -21,8 +21,11 @@ const View = () => {
 
   return (
     <main className="site-width h-100">
-      <div className="view-controlls flex justify-between align-items-center mv-20 m-mv-20">
-        <div onClick={() => setShowAddBudgetModal(true)}>
+      <div className="view-controlls flex flex-wrap m-justify-between align-items-center mv-50 m-mv-50">
+        <div
+          className="mr-50 m-mr-0"
+          onClick={() => setShowAddBudgetModal(true)}
+        >
           <Button
             content={langTerms(lang, "Add Budget")}
             variant={"btn-primary"}

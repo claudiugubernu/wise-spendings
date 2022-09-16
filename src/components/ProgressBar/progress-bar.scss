@@ -1,0 +1,21 @@
+.progress-bar-wrapper {
+    height: 20px;
+    background-color: #e0e0de;
+    border-radius: 50px;
+
+    .progress-bar {
+        height: 100%;
+        border-radius: inherit;
+        text-align: right;
+        position: relative;
+        overflow: hidden;
+
+        .progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+}
