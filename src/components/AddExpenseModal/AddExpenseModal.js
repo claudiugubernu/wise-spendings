@@ -41,7 +41,13 @@ const AddExpenseModal = ({ show, handleClose, defaultBudgetID }) => {
           </div>
           <div className="form-row mb-20 flex flex-column v-gap-20">
             <label htmlFor="date">{langTerms(lang, "Date")}</label>
-            <input type="date" id="date" ref={dateRef} required />
+            <input
+              type="date"
+              id="date"
+              ref={dateRef}
+              min="2022-01-01"
+              required
+            />
           </div>
           <div className="form-row mb-20 flex flex-column v-gap-20">
             <label htmlFor="amount">{langTerms(lang, "Amount")}</label>
