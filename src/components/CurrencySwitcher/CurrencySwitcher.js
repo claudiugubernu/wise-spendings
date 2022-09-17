@@ -11,11 +11,12 @@ const CurrencySwitcher = () => {
         {langTerms(lang, "Currency")}
       </label>
       <select id="currency" onChange={onSetCurrency} value={currency}>
-        <option value="gbp" defaultValue>
+        <option value="GBP" selected>
           GBP
         </option>
-        <option value="ron">RON</option>
-        <option value="usd">USD</option>
+        <option value="RON">RON</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
       </select>
     </div>
   );

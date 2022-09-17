@@ -25,7 +25,7 @@ const AppProvider = ({ children }) => {
   };
 
   // Currency
-  const [currency, setCurrency] = useLocalStorage("currency", "gpb");
+  const [currency, setCurrency] = useLocalStorage("currency", "GBP");
   const onSetCurrency = (e) => {
     setCurrency(e.target.value);
   };
