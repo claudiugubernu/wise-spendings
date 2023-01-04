@@ -11,7 +11,7 @@ const CurrencySwitcher = () => {
         {langTerms(lang, "Currency")}
       </label>
       <select id="currency" onChange={onSetCurrency} value={currency}>
-        <option value="GBP" selected>
+        <option value="GBP">
           GBP
         </option>
         <option value="RON">RON</option>
