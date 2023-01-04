@@ -18,17 +18,24 @@ const Card = ({
   const classNames = [];
   // Set clases for cardBackground
   if (amount > max) {
-    classNames.push("bg-danger", "bg-opacity-10");
+    classNames.push("bg-opacity-10 c-white");
   } else if (green) {
     isDark
       ? classNames.push("bg-primary c-white")
       : classNames.push("bg-primary");
   }
 
+  const overBudgetTotal = amount - max;
+
   return (
     <div className={`card ${classNames.join(" ")}`}>
       <div className="card-header flex justify-between">
         <p className="title fs-20 m-0 tt-capitalize">{name}</p>
+        { 
+          amount > max && (
+            <p className="m-0 fw-bold tt-uppercase">⚠️ Over budget by {currencyFormatter(currency).format(overBudgetTotal)}</p>
+          )
+        }
         <div className="card-amounts flex">
           <p className="m-0 fs-20">
             {currencyFormatter(currency).format(amount)}
