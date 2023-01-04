@@ -29,23 +29,27 @@ const Card = ({
 
   return (
     <div className={`card ${classNames.join(" ")}`}>
-      <div className="card-header flex justify-between">
-        <p className="title fs-20 m-0 tt-capitalize">{name}</p>
-        { 
-          amount > max && (
-            <p className="m-0 fw-bold tt-uppercase">⚠️ Over budget by {currencyFormatter(currency).format(overBudgetTotal)}</p>
-          )
-        }
-        <div className="card-amounts flex">
-          <p className="m-0 fs-20">
-            {currencyFormatter(currency).format(amount)}
-          </p>
-          {max && (
-            <span className="max-amount">
-              {" "}
-              / {currencyFormatter(currency).format(max)}{" "}
-            </span>
-          )}
+      <div className="card-header flex flex-column v-gap-10">
+        <div className="flex justify-between">
+          <p className="title fs-20 m-0 tt-capitalize">{name}</p>
+          <div className="card-amounts flex">
+            <p className="m-0 fs-20">
+              {currencyFormatter(currency).format(amount)}
+            </p>
+            {max && (
+              <span className="max-amount">
+                {" "}
+                / {currencyFormatter(currency).format(max)}{" "}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="budget-alert">
+          { 
+            amount > max && (
+              <p className="m-0 fw-bold tt-uppercase">⚠️ Over budget by {currencyFormatter(currency).format(overBudgetTotal)}</p>
+            )
+          }
         </div>
       </div>
       <div className="card-body">
