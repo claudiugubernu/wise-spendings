@@ -2,7 +2,7 @@ import {
   UNCATEGORIZED_BUDGET_ID,
   useAppContext,
 } from "../../context/AppContext";
-import { currencyFormatter } from "../../utils/utils";
+import { sliceString, currencyFormatter } from "../../utils/utils";
 import { langTerms } from "../../static/langTerms";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import Button from "../Button/Button";
@@ -54,7 +54,7 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
               className="flex justify-between align-items-center mv-20 m-mv-20"
               key={expense.id}
             >
-              <p className="m-0">{expense.description}</p>
+              <p className="m-0">{sliceString(expense.description)}</p>
               <p className="m-0">
                 {new Date(expense.date).toLocaleDateString("en-GB")}
               </p>
