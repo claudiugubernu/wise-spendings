@@ -58,7 +58,7 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
               <p className="m-0">
                 {new Date(expense.date).toLocaleDateString("en-GB")}
               </p>
-              <p className="m-0">
+              <p className="expense-amount">
                 {currencyFormatter(currency).format(expense.amount)}
               </p>
               <div onClick={() => deleteExpense(expense)}>

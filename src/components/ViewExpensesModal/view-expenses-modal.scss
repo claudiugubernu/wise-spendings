@@ -2,12 +2,16 @@
   .modal-body .grid {
     grid-template-columns: repeat(4, 1fr);
 
-    p:not(:first-of-type) {
-      margin-left: auto;
+    p:first-of-type {
+      grid-column: 1/3;
+    }
+
+    .expense-amount {
+      margin: 0 auto;
     }
 
     div {
-      margin-left: auto;
+      grid-column: 5/6;
     }
   }
 }

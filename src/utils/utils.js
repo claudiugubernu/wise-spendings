@@ -6,5 +6,5 @@ export const currencyFormatter = (currency = "GBP") =>
   });
 
 export const sliceString = (string) => {
-  return string.length < 10 ? string : string.substring(0,10) + '...' 
+  return string.length < 13 ? string : string.substring(0,13) + '...' 
 }
