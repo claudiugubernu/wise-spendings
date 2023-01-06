@@ -47,7 +47,7 @@ const Card = ({
         <div className="budget-alert">
           { 
             amount > max && (
-              <p className="m-0 fw-bold tt-uppercase">⚠️ Over budget by {currencyFormatter(currency).format(overBudgetTotal)}</p>
+              <p className="m-0 fw-bold tt-uppercase">⚠️ {langTerms(lang, "Over budget by")} {currencyFormatter(currency).format(overBudgetTotal)}</p>
             )
           }
         </div>

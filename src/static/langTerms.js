@@ -140,6 +140,13 @@ export function langTerms($language, $term) {
         ro: "Dată",
       },
     },
+    {
+      term: "Over budget by",
+      lang: {
+        en: "Over budget by",
+        ro: "Buget depășit cu",
+      },
+    },
   ];
   // Filter the array and return the result
   function filterIt(array, value, key) {
