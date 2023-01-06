@@ -28,7 +28,7 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
       : budgets.find((budget) => budget.id === budgetId);
   return (
     <>
-      <div className={budgetId != null ? "modal show" : "modal"}>
+      <div className={budgetId != null ? "modal expenses show" : "modal"}>
         <div className="modal-header flex justify-between align-items-center mv-20">
           <label className="">
             {langTerms(lang, "Expenses")} -{budget?.name}
@@ -51,8 +51,8 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
         <div className="modal-body">
           {expenses.map((expense) => (
             <div
-              className="flex justify-between align-items-center mv-20 m-mv-20"
-              key={expense.id}
+              className="grid align-items-center mv-20 m-mv-20"
+              key={expense.id} title={expense.description}
             >
               <p className="m-0">{sliceString(expense.description)}</p>
               <p className="m-0">

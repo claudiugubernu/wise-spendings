@@ -1,0 +1,13 @@
+.expenses {
+  .modal-body .grid {
+    grid-template-columns: repeat(4, 1fr);
+
+    p:not(:first-of-type) {
+      margin-left: auto;
+    }
+
+    div {
+      margin-left: auto;
+    }
+  }
+}
