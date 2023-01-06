@@ -6,7 +6,7 @@ Your smart budget app companion.
 
 A Web Application that allows you to keep your spendings in check.
 
-##v0.1 Features
+## v0.1 Features
 - Light/Dark Mode
 - Language Picker ( En & Ro )
 - Currency Picker ( GBP, USD, EUR, RON )
