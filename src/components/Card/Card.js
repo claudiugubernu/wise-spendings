@@ -33,7 +33,12 @@ const Card = ({
   const remainingBudget = max - amount;
 
   const onShowRemaningBudget = () => {
+    // Show remaining budget
     setShowRemainingBudget((prev) => !prev)
+    // Hide it after 1500ms
+    setTimeout(() => {
+      setShowRemainingBudget((prev) => !prev)
+    }, 1500)
   }
 
   return (
