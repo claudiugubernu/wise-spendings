@@ -16,7 +16,7 @@ export const sortAscending = (array) => {
 
 export const formatDate = (date, format) => {
   const map = {
-    mm: date.getMonth() + 1,
+    mm: (date.getMonth() + 1).toString().padStart(2, '0'),
     dd: date.getDate().toString().padStart(2, '0'),
     yyyy: date.getFullYear(),
   }
