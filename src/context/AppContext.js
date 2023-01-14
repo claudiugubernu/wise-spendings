@@ -30,6 +30,13 @@ const AppProvider = ({ children }) => {
     setCurrency(e.target.value);
   };
 
+  // Sort Expenses by Date
+  const [sortByDate, setSortByDate] = useLocalStorage("sortByDate", false);
+
+  const onSortByDate = () => {
+    setSortByDate((prev)=> !prev)
+  }
+
   // Budget & Expenses
   const [budgets, setBudgets] = useLocalStorage("budgets", []);
   const [expenses, setExpenses] = useLocalStorage("expenses", []);
@@ -99,6 +106,8 @@ const AppProvider = ({ children }) => {
         addBudget,
         deleteBudget,
         deleteExpense,
+        onSortByDate,
+        sortByDate
       }}
     >
       {children}

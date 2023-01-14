@@ -1,11 +1,8 @@
-import { useAppContext } from "../../context/AppContext";
-
-const ToggleSwitch = () => {
-  const { toggleTheme, isDark } = useAppContext();
+const ToggleSwitch = ({checked, onChange}) => {
   return (
     <div className="toggle-switch">
       <label className="switch">
-        <input type="checkbox" checked={isDark} onChange={toggleTheme} />
+        <input type="checkbox" checked={checked} onChange={onChange} />
         <span className="slider round"></span>
       </label>
     </div>
