@@ -2,6 +2,7 @@ import { currencyFormatter } from "../../utils/utils";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Button from "../Button/Button";
 import { langTerms } from "../../static/langTerms";
+import { useState } from "react";
 
 const Card = ({
   currency,
@@ -25,24 +26,39 @@ const Card = ({
       : classNames.push("bg-primary");
   }
 
+  // Remaining Budget Display
+  const [showRemaningBudget, setShowRemainingBudget] = useState(false);
+
   const overBudgetTotal = amount - max;
+  const remainingBudget = max - amount;
+
+  const onShowRemaningBudget = () => {
+    setShowRemainingBudget((prev) => !prev)
+  }
 
   return (
     <div className={`card ${classNames.join(" ")}`}>
       <div className="card-header flex flex-column v-gap-10">
         <div className="flex justify-between">
           <p className="title fs-20 m-0 tt-capitalize">{name}</p>
-          <div className="card-amounts flex">
-            <p className="m-0">Remaining budget: </p>
-            <p className="m-0 fs-20">
-              {currencyFormatter(currency).format(amount)}
-            </p>
-            {max && (
-              <span className="max-amount">
-                {" "}
-                / {currencyFormatter(currency).format(max)}{" "}
-              </span>
-            )}
+          <div className="card-amounts flex" onClick={onShowRemaningBudget}>
+            {
+              showRemaningBudget && !(amount > max) ? (
+                <p className="m-0 fs-20">Remaining budget: {currencyFormatter(currency).format(remainingBudget)}</p>
+              ) : (
+                <>
+                <p className="m-0 fs-20">
+                  {currencyFormatter(currency).format(amount)}
+                </p>
+                {max && (
+                  <span className="max-amount">
+                    {" "}
+                    / {currencyFormatter(currency).format(max)}{" "}
+                  </span>
+                )}
+                </>
+              )
+            }
           </div>
         </div>
         <div className="budget-alert">
