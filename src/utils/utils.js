@@ -13,3 +13,12 @@ export const sortAscending = (array) => {
   const sorted =  array.sort((a,b) => Date.parse(b.date) - Date.parse(a.date))
   return sorted;
 }
+
+export const formatDate = (date, format) => {
+  const map = {
+    mm: date.getMonth() + 1,
+    dd: date.getDate().toString().padStart(2, '0'),
+    yyyy: date.getFullYear(),
+  }
+  return format.replace(/mm|dd|yyyy/gi, matched => map[matched])
+}

@@ -31,9 +31,9 @@ const Settings = () => {
         </div>
         <div className="modal-body">
           <ThemeSwitcher />
+          <SortByDate />
           <LanguageSwitcher />
           <CurrencySwitcher />
-          <SortByDate />
         </div>
       </div>
       <div

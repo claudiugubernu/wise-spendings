@@ -6,6 +6,7 @@ import {
   useAppContext,
   UNCATEGORIZED_BUDGET_ID,
 } from "../../context/AppContext";
+import { formatDate } from "../../utils/utils";
 
 const AddExpenseModal = ({ show, handleClose, defaultBudgetID }) => {
   const formRef = useRef();
@@ -25,6 +26,8 @@ const AddExpenseModal = ({ show, handleClose, defaultBudgetID }) => {
     formRef.current.reset();
     handleClose();
   };
+  const maxDate = formatDate(new Date(), 'yyyy-mm-dd');
+
   return (
     <>
       <div className={show ? "modal show" : "modal"}>
@@ -52,6 +55,8 @@ const AddExpenseModal = ({ show, handleClose, defaultBudgetID }) => {
                 id="date"
                 ref={dateRef}
                 min="2022-01-01"
+                max="2023-01-14"
+                // max={maxDate}
                 required
               />
             </div>
