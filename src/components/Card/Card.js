@@ -33,6 +33,7 @@ const Card = ({
         <div className="flex justify-between">
           <p className="title fs-20 m-0 tt-capitalize">{name}</p>
           <div className="card-amounts flex">
+            <p className="m-0">Remaining budget: </p>
             <p className="m-0 fs-20">
               {currencyFormatter(currency).format(amount)}
             </p>
