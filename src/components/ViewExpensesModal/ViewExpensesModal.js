@@ -15,9 +15,10 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
     deleteExpense,
     currency,
     lang,
+    sortByDate
   } = useAppContext();
 
-  const expenses = getBudgetExpenses(budgetId);
+  const expenses = sortByDate ? getBudgetExpenses(budgetId).sort((a, b) => (a < b ? 1 : -1)) : getBudgetExpenses(budgetId);
 
   const budget =
     UNCATEGORIZED_BUDGET_ID === budgetId

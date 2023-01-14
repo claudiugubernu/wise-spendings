@@ -48,7 +48,7 @@ const Card = ({
           <p className="title fs-20 m-0 tt-capitalize">{name}</p>
           <div className="card-amounts flex" onClick={onShowRemaningBudget}>
             {
-              showRemaningBudget && !(amount > max) ? (
+              showRemaningBudget && !(amount > max) && max ? (
                 <p className="m-0 fs-20">Remaining budget: {currencyFormatter(currency).format(remainingBudget)}</p>
               ) : (
                 <>
