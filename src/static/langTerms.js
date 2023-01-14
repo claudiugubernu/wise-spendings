@@ -147,6 +147,13 @@ export function langTerms($language, $term) {
         ro: "Buget depășit cu",
       },
     },
+    {
+      term: "Sort by date",
+      lang: {
+        en: "Sort by date",
+        ro: "Sortează după dată",
+      },
+    },
   ];
   // Filter the array and return the result
   function filterIt(array, value, key) {

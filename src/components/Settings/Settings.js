@@ -6,6 +6,7 @@ import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 import CurrencySwitcher from "../CurrencySwitcher/CurrencySwitcher";
 import { useAppContext } from "../../context/AppContext";
 import { langTerms } from "../../static/langTerms";
+import SortByDate from "../SortByDate/SortByDate";
 
 const Settings = () => {
   const { lang } = useAppContext();
@@ -32,6 +33,7 @@ const Settings = () => {
           <ThemeSwitcher />
           <LanguageSwitcher />
           <CurrencySwitcher />
+          <SortByDate />
         </div>
       </div>
       <div
