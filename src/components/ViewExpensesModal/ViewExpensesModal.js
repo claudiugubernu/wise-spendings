@@ -2,7 +2,7 @@ import {
   UNCATEGORIZED_BUDGET_ID,
   useAppContext,
 } from "../../context/AppContext";
-import { sliceString, currencyFormatter } from "../../utils/utils";
+import { sliceString, currencyFormatter, sortAscending } from "../../utils/utils";
 import { langTerms } from "../../static/langTerms";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import Button from "../Button/Button";
@@ -18,7 +18,7 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
     sortByDate
   } = useAppContext();
 
-  const expenses = sortByDate ? getBudgetExpenses(budgetId).sort((a, b) => (a < b ? 1 : -1)) : getBudgetExpenses(budgetId);
+  const expenses = sortByDate ? sortAscending(getBudgetExpenses(budgetId)) : getBudgetExpenses(budgetId);
 
   const budget =
     UNCATEGORIZED_BUDGET_ID === budgetId
