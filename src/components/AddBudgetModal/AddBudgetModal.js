@@ -8,12 +8,14 @@ const AddBudgetModal = ({ show, handleClose }) => {
   const formRef = useRef();
   const nameRef = useRef();
   const maxRef = useRef();
+  const budgetPeriod = useRef();
   const { addBudget, lang } = useAppContext();
   const handleSubmit = (e) => {
     e.preventDefault();
     addBudget({
       name: nameRef.current.value,
       max: parseFloat(maxRef.current.value),
+      budgetPeriod: budgetPeriod.current.value
     });
     formRef.current.reset();
     handleClose();
@@ -46,7 +48,7 @@ const AddBudgetModal = ({ show, handleClose }) => {
             <label htmlFor="budgetPeriod">
               {langTerms(lang, "Budget Period")}
             </label>
-            <select id="budgetPeriod">
+            <select id="budgetPeriod" ref={budgetPeriod} required>
               <option value="week">{langTerms(lang, "One Week")}</option>
               <option value="month">{langTerms(lang, "One Month")}</option>
               <option value="year">{langTerms(lang, "One Year")}</option>

@@ -106,6 +106,13 @@ export function langTerms($language, $term) {
       },
     },
     {
+      term: "Repeat",
+      lang: {
+        en: "Repeat",
+        ro: "Repetă",
+      },
+    },
+    {
       term: "Name",
       lang: {
         en: "Name",
@@ -187,6 +194,20 @@ export function langTerms($language, $term) {
       lang: {
         en: "Sort by date",
         ro: "Sortează după dată",
+      },
+    },
+    {
+      term: "Alert",
+      lang: {
+        en: "Alert",
+        ro: "Alertă",
+      },
+    },
+    {
+      term: "Your budget period has come to an end. How would you like to proceed ?",
+      lang: {
+        en: "Your budget period has come to an end. How would you like to proceed ?",
+        ro: "Perioada bugetului dumneavoastră a ajuns la sfârșit. Cum doriti să procedati ?",
       },
     },
   ];
