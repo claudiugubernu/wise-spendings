@@ -8,6 +8,13 @@ export function langTerms($language, $term) {
       },
     },
     {
+      term: "Language",
+      lang: {
+        en: "Language",
+        ro: "Limbă",
+      },
+    },
+    {
       term: "English",
       lang: {
         en: "English",
@@ -40,6 +47,34 @@ export function langTerms($language, $term) {
       lang: {
         en: "Add Budget",
         ro: "Adaugă Buget",
+      },
+    },
+    {
+      term: "Budget Period",
+      lang: {
+        en: "Budget Period",
+        ro: "Perioadă Buget",
+      },
+    },
+    {
+      term: "One Week",
+      lang: {
+        en: "One Week",
+        ro: "O Săptămână",
+      },
+    },
+    {
+      term: "One Month",
+      lang: {
+        en: "One Month",
+        ro: "O Lună",
+      },
+    },
+    {
+      term: "One Year",
+      lang: {
+        en: "One Year",
+        ro: "Un An",
       },
     },
     {

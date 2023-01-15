@@ -38,9 +38,19 @@ const AddBudgetModal = ({ show, handleClose }) => {
                 id="max"
                 ref={maxRef}
                 required
-                min={0}
+                min={1}
                 step={0.01}
               />
+            </div>
+            <div className="form-row mb-20 flex flex-column v-gap-20">
+            <label htmlFor="budgetPeriod">
+              {langTerms(lang, "Budget Period")}
+            </label>
+            <select id="budgetPeriod">
+              <option value="week">{langTerms(lang, "One Week")}</option>
+              <option value="month">{langTerms(lang, "One Month")}</option>
+              <option value="year">{langTerms(lang, "One Year")}</option>
+            </select>
             </div>
             <div className="flex justify-end mt-50">
               <Button

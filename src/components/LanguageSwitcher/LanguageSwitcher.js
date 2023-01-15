@@ -6,7 +6,7 @@ const LanguageSwitcher = () => {
   return (
     <div className="language-switcher p-20 flex justify-between align-items-center gap-20">
       <label htmlFor="language" className="fs-20">
-        {lang === "en" ? "Language:" : "Limbă:"}
+        {langTerms(lang, "Language")}
       </label>
       <select id="language" value={lang} onChange={onSetLang}>
         <option value="en">{langTerms(lang, "English")}</option>
