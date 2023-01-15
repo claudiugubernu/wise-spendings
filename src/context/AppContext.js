@@ -57,13 +57,13 @@ const AppProvider = ({ children }) => {
   };
 
   // Add Budget
-  const addBudget = ({ name, max }) => {
+  const addBudget = ({ name, max, budgetPeriod, dateAdded }) => {
     setBudgets((prevBudgets) => {
       // If we already have something with same name return originial budget
       if (prevBudgets.find((budget) => budget.name === name)) {
         return prevBudgets;
       }
-      return [...prevBudgets, { id: uuidV4(), name, max }];
+      return [...prevBudgets, { id: uuidV4(), name, max, budgetPeriod, dateAdded }];
     });
   };
 

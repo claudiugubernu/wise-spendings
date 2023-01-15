@@ -15,7 +15,8 @@ const AddBudgetModal = ({ show, handleClose }) => {
     addBudget({
       name: nameRef.current.value,
       max: parseFloat(maxRef.current.value),
-      budgetPeriod: budgetPeriod.current.value
+      budgetPeriod: budgetPeriod.current.value,
+      dateAdded: new Date()
     });
     formRef.current.reset();
     handleClose();
