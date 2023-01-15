@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 
 const Modal = ({modalHeader, modalBodyText, buttons}) => {
   const {lang} = useAppContext();
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const handleClose = () => {
     setShowModal((prev) => !prev)
   }
