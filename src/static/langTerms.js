@@ -8,6 +8,13 @@ export function langTerms($language, $term) {
       },
     },
     {
+      term: "Language",
+      lang: {
+        en: "Language",
+        ro: "Limbă",
+      },
+    },
+    {
       term: "English",
       lang: {
         en: "English",
@@ -43,6 +50,34 @@ export function langTerms($language, $term) {
       },
     },
     {
+      term: "Budget Period",
+      lang: {
+        en: "Budget Period",
+        ro: "Perioadă Buget",
+      },
+    },
+    {
+      term: "One Week",
+      lang: {
+        en: "One Week",
+        ro: "O Săptămână",
+      },
+    },
+    {
+      term: "One Month",
+      lang: {
+        en: "One Month",
+        ro: "O Lună",
+      },
+    },
+    {
+      term: "One Year",
+      lang: {
+        en: "One Year",
+        ro: "Un An",
+      },
+    },
+    {
       term: "Add Expense",
       lang: {
         en: "Add Expense",
@@ -68,6 +103,13 @@ export function langTerms($language, $term) {
       lang: {
         en: "Delete",
         ro: "Șterge",
+      },
+    },
+    {
+      term: "Repeat",
+      lang: {
+        en: "Repeat",
+        ro: "Repetă",
       },
     },
     {
@@ -152,6 +194,20 @@ export function langTerms($language, $term) {
       lang: {
         en: "Sort by date",
         ro: "Sortează după dată",
+      },
+    },
+    {
+      term: "Alert",
+      lang: {
+        en: "Alert",
+        ro: "Alertă",
+      },
+    },
+    {
+      term: "Your budget period has come to an end. How would you like to proceed ?",
+      lang: {
+        en: "Your budget period has come to an end. How would you like to proceed ?",
+        ro: "Perioada bugetului dumneavoastră a ajuns la sfârșit. Cum doriti să procedati ?",
       },
     },
   ];
