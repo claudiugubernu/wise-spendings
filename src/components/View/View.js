@@ -6,7 +6,7 @@ import AddBudgetModal from "../AddBudgetModal/AddBudgetModal";
 import AddExpenseModal from "../AddExpenseModal/AddExpenseModal";
 import CardGrid from "../CardGrid/CardGrid";
 import ViewExpensesModal from "../ViewExpensesModal/ViewExpensesModal";
-import Modal from "../Modal/Modal";
+import AlertModal from "../AlertModal/AlertModal";
 
 const View = () => {
   const { lang } = useAppContext();
@@ -56,7 +56,7 @@ const View = () => {
         budgetId={viewExpensesModalBudgetId}
         handleClose={() => setViewExpensesModalBudgetId()}
       />
-      <Modal modalHeader={'Alert'} modalBodyText={'Your budget period has come to an end. How would you like to proceed ?'} buttons={true}/>
+      <AlertModal />
     </main>
   );
 };

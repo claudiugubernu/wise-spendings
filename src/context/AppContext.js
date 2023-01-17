@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { v4 as uuidV4 } from "uuid";
 
@@ -32,7 +32,6 @@ const AppProvider = ({ children }) => {
 
   // Sort Expenses by Date
   const [sortByDate, setSortByDate] = useLocalStorage("sortByDate", false);
-
   const onSortByDate = () => {
     setSortByDate((prev)=> !prev)
   }
@@ -89,6 +88,48 @@ const AppProvider = ({ children }) => {
     });
   };
 
+  // Alerts
+  const [showAlert, setShowAlert] = useState(false);
+
+  const todayDate = new Date();
+  const budgetPeriod = budgets?.map(budget => budget.budgetPeriod);
+  let alarmDay = new Date();
+
+  const onHandleAlert = (resolution, id) => {
+    setShowAlert((prev) => !prev);
+    resolution === 'delete' && deleteBudget(id);
+    if (resolution === 'repeat') {
+
+    }
+  }
+
+  // const checkCase = (budgetPeriod) => {
+  //   switch (budgetPeriod) {
+  //     case 'week': 
+  //       alarmDay.setDate(todayDate.getDate() - 1);
+  //       if(alarmDay <= todayDate) {
+  //         setShowAlert(true)
+  //       }
+  //       break;
+  //     case 'month':
+  //       alarmDay.setDate(todayDate.getDate() + 30);
+  //       if(alarmDay <= todayDate) {
+  //         setShowAlert(true)
+  //       }
+  //       break;
+  //     case 'year':
+  //       alarmDay.setDate(todayDate.getDate() + 365);
+  //       if(alarmDay <= todayDate) {
+  //         setShowAlert(true)
+  //       }
+  //       break;
+  //     default:
+  //       console.log('Empty action received.');
+  //       console.log(budgetPeriod)
+  //       break;
+  //   }
+  // }
+
   return (
     <AppContext.Provider
       value={{
@@ -107,7 +148,9 @@ const AppProvider = ({ children }) => {
         deleteBudget,
         deleteExpense,
         onSortByDate,
-        sortByDate
+        sortByDate,
+        showAlert,
+        onHandleAlert
       }}
     >
       {children}
