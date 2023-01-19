@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { v4 as uuidV4 } from "uuid";
 
@@ -87,48 +87,58 @@ const AppProvider = ({ children }) => {
       return prevExpense.filter((expense) => expense.id !== id);
     });
   };
-
+  
   // Alerts
-  const [showAlert, setShowAlert] = useState(false);
-
+  const [showBudgetAlert, setShowBudgetAlert] = useState({
+    show: false,
+    budgetName: '',
+    budgetId: ''
+  });
   const todayDate = new Date();
-  const budgetPeriod = budgets?.map(budget => budget.budgetPeriod);
   let alarmDay = new Date();
 
+    
   const onHandleAlert = (resolution, id) => {
-    setShowAlert((prev) => !prev);
-    resolution === 'delete' && deleteBudget(id);
-    if (resolution === 'repeat') {
-
+    console.log(resolution, id)
+    if(resolution === 'delete') {
+      deleteBudget({id});
     }
+    if (resolution === 'repeat') {
+    }
+    setShowBudgetAlert({...setShowBudgetAlert, show: false})
   }
-
-  // const checkCase = (budgetPeriod) => {
-  //   switch (budgetPeriod) {
-  //     case 'week': 
-  //       alarmDay.setDate(todayDate.getDate() - 1);
-  //       if(alarmDay <= todayDate) {
-  //         setShowAlert(true)
-  //       }
-  //       break;
-  //     case 'month':
-  //       alarmDay.setDate(todayDate.getDate() + 30);
-  //       if(alarmDay <= todayDate) {
-  //         setShowAlert(true)
-  //       }
-  //       break;
-  //     case 'year':
-  //       alarmDay.setDate(todayDate.getDate() + 365);
-  //       if(alarmDay <= todayDate) {
-  //         setShowAlert(true)
-  //       }
-  //       break;
-  //     default:
-  //       console.log('Empty action received.');
-  //       console.log(budgetPeriod)
-  //       break;
-  //   }
-  // }
+  
+  // Check budgets set period to handle alert
+  useEffect(() => {
+    budgets.map(budget => {
+      switch(budget.budgetPeriod) {
+        case 'week':
+          alarmDay.setDate(todayDate.getDate() - 1);
+          console.log("alarmDay",alarmDay)
+          if(alarmDay <= todayDate) {
+            setShowBudgetAlert({...showBudgetAlert, show: true, budgetName: budget.name, budgetId: budget.id})
+          }
+          break;
+        case 'month':
+          alarmDay.setDate(todayDate.getDate() - 30);
+          console.log("alarmDay",alarmDay)
+          if(alarmDay <= todayDate) {
+            setShowBudgetAlert({...showBudgetAlert, show: true, budgetName: budget.name, budgetId: budget.id})
+          }
+          break;
+        case 'year':
+          alarmDay.setDate(todayDate.getDate() - 365);
+          console.log("alarmDay",alarmDay)
+          if(alarmDay <= todayDate) {
+            setShowBudgetAlert({...showBudgetAlert, show: true, budgetName: budget.name, budgetId: budget.id})
+          }
+          break;
+        default: 
+          console.log('no budget period found')
+          break;
+      }
+    })
+  }, [budgets])
 
   return (
     <AppContext.Provider
@@ -149,7 +159,7 @@ const AppProvider = ({ children }) => {
         deleteExpense,
         onSortByDate,
         sortByDate,
-        showAlert,
+        showBudgetAlert,
         onHandleAlert
       }}
     >
