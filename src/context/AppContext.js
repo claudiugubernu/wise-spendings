@@ -39,12 +39,7 @@ const AppProvider = ({ children }) => {
   // Budget & Expenses
   const [budgets, setBudgets] = useLocalStorage("budgets", []);
   const [expenses, setExpenses] = useLocalStorage("expenses", []);
-
-  // Get Budget
-  const getBudgetExpenses = (budgetId) => {
-    return expenses.filter((expense) => expense.budgetId === budgetId);
-  };
-
+  
   // Add Expense
   const addExpense = ({ description, date, amount, budgetId }) => {
     setExpenses((prevExpenses) => {
@@ -53,6 +48,18 @@ const AppProvider = ({ children }) => {
         { id: uuidV4(), description, date, amount, budgetId },
       ];
     });
+  };
+  
+  // Delete Expense
+  const deleteExpense = ({ id }) => {
+    setExpenses((prevExpense) => {
+      return prevExpense.filter((expense) => expense.id !== id);
+    });
+  };
+  
+  // Get Budget
+  const getBudgetExpenses = (budgetId) => {
+    return expenses.filter((expense) => expense.budgetId === budgetId);
   };
 
   // Add Budget
@@ -64,6 +71,11 @@ const AppProvider = ({ children }) => {
       }
       return [...prevBudgets, { id: uuidV4(), name, max, budgetPeriod, dateAdded }];
     });
+  };
+  
+  // Update Budget
+  const updateBudget = ({ id }) => {
+    
   };
 
   // Delete Budget
@@ -81,64 +93,40 @@ const AppProvider = ({ children }) => {
     });
   };
 
-  // Delete Expense
-  const deleteExpense = ({ id }) => {
-    setExpenses((prevExpense) => {
-      return prevExpense.filter((expense) => expense.id !== id);
-    });
-  };
-  
   // Alerts
-  const [showBudgetAlert, setShowBudgetAlert] = useState({
-    show: false,
-    budgetName: '',
-    budgetId: ''
-  });
-  const todayDate = new Date();
-  let alarmDay = new Date();
-
+  const [budgetAlert, setBudgetAlert] = useState({});
+  const [showBudgetAlert, setShowBudgetAlert] = useState(false)
     
-  const onHandleAlert = (resolution, id) => {
-    console.log(resolution, id)
+  const onHandleAlert = (resolution, budget) => {
+    const {id} = budget
     if(resolution === 'delete') {
       deleteBudget({id});
+      setBudgetAlert({})
     }
-    if (resolution === 'repeat') {
-    }
-    setShowBudgetAlert({...setShowBudgetAlert, show: false})
+    // if (resolution === 'repeat') {
+    //   updateBudget({id, name, budgetPeriod, max, dateAdded, show:false})
+    // }
+    setShowBudgetAlert(false)
   }
-  
-  // Check budgets set period to handle alert
+
+  // const currentDate = new Date();
+  const currentDate = new Date(1674893827165).valueOf(); // 28
+
   useEffect(() => {
-    budgets.map(budget => {
-      switch(budget.budgetPeriod) {
-        case 'week':
-          alarmDay.setDate(todayDate.getDate() - 1);
-          console.log("alarmDay",alarmDay)
-          if(alarmDay <= todayDate) {
-            setShowBudgetAlert({...showBudgetAlert, show: true, budgetName: budget.name, budgetId: budget.id})
-          }
-          break;
-        case 'month':
-          alarmDay.setDate(todayDate.getDate() - 30);
-          console.log("alarmDay",alarmDay)
-          if(alarmDay <= todayDate) {
-            setShowBudgetAlert({...showBudgetAlert, show: true, budgetName: budget.name, budgetId: budget.id})
-          }
-          break;
-        case 'year':
-          alarmDay.setDate(todayDate.getDate() - 365);
-          console.log("alarmDay",alarmDay)
-          if(alarmDay <= todayDate) {
-            setShowBudgetAlert({...showBudgetAlert, show: true, budgetName: budget.name, budgetId: budget.id})
-          }
-          break;
-        default: 
-          console.log('no budget period found')
-          break;
+    budgets.map((budget) => {
+      let alertDate = new Date(budget.budgetPeriod).valueOf()
+      console.log(budget.name, alertDate)
+      console.log('currentDate', currentDate)
+      if(currentDate >= alertDate) {
+        console.log(budget.name);
+        setBudgetAlert({
+          id: budget.id,
+          name: budget.name,
+        })
+        setShowBudgetAlert(true)
       }
     })
-  }, [budgets])
+  },[budgets, currentDate, budgetAlert])
 
   return (
     <AppContext.Provider
@@ -159,6 +147,7 @@ const AppProvider = ({ children }) => {
         deleteExpense,
         onSortByDate,
         sortByDate,
+        budgetAlert,
         showBudgetAlert,
         onHandleAlert
       }}

@@ -8,14 +8,27 @@ const AddBudgetModal = ({ show, handleClose }) => {
   const formRef = useRef();
   const nameRef = useRef();
   const maxRef = useRef();
-  const budgetPeriod = useRef();
+  const budgetPeriodRef = useRef();
   const { addBudget, lang } = useAppContext();
   const handleSubmit = (e) => {
     e.preventDefault();
+    const date = new Date();
+    let budgetPeriod = new Date();
+
+    if ( budgetPeriodRef.current.value === 'week') {
+      budgetPeriod.setDate(new Date(date.getDate() + 7))
+    }
+    if ( budgetPeriodRef.current.value === 'month') {
+      budgetPeriod.setDate(new Date(date.getDate() + 30))
+    }
+    if ( budgetPeriodRef.current.value === 'year') {
+      budgetPeriod.setDate(new Date(date.getDate() + 365))
+    }
+
     addBudget({
       name: nameRef.current.value,
-      max: parseFloat(maxRef.current.value),
-      budgetPeriod: budgetPeriod.current.value,
+      max: parseFloat(maxRef.current.value),  
+      budgetPeriod: budgetPeriod,
       dateAdded: new Date()
     });
     formRef.current.reset();
@@ -49,7 +62,7 @@ const AddBudgetModal = ({ show, handleClose }) => {
             <label htmlFor="budgetPeriod">
               {langTerms(lang, "Budget Period")}
             </label>
-            <select id="budgetPeriod" ref={budgetPeriod} required>
+            <select id="budgetPeriod" ref={budgetPeriodRef} required>
               <option value="week">{langTerms(lang, "One Week")}</option>
               <option value="month">{langTerms(lang, "One Month")}</option>
               <option value="year">{langTerms(lang, "One Year")}</option>
