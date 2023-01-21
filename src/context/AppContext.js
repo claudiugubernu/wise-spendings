@@ -66,7 +66,8 @@ const AppProvider = ({ children }) => {
   const addBudget = ({ name, max, budgetPeriod, dateAdded }) => {
     setBudgets((prevBudgets) => {
       // If we already have something with same name return originial budget
-      if (prevBudgets.find((budget) => budget.name === name)) {
+      if (prevBudgets.find((budget) => budget.name.toLowerCase() === name.toLowerCase())) {
+        alert('A budget with that name has been found.')
         return prevBudgets;
       }
       return [...prevBudgets, { id: uuidV4(), name, max, budgetPeriod, dateAdded }];

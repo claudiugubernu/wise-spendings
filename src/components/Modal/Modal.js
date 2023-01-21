@@ -2,6 +2,7 @@ import React from 'react'
 import { useAppContext } from '../../context/AppContext';
 import { langTerms } from '../../static/langTerms';
 import Button from '../Button/Button';
+import { RiErrorWarningLine } from "react-icons/ri";
 
 const Modal = ({modalHeader, modalBodyText, buttons, budgetAlert}) => {
   const {lang, onHandleAlert, showBudgetAlert} = useAppContext();
@@ -10,15 +11,20 @@ const Modal = ({modalHeader, modalBodyText, buttons, budgetAlert}) => {
   return (
     <>
     <div className={showBudgetAlert ? `modal alert-${name?.toLowerCase()} show` : `modal alert-${name?.toLowerCase()}`}>
-      <div className="modal-header flex justify-between align-items-center mv-20">
-        <label className="fs-30">{langTerms(lang, modalHeader)}!</label>
-        {id ? (<p className='m-0 fs-20'>{langTerms(lang, 'Budget')} - {name}</p>) : ('')}
+      <div className="modal-header flex justify-center align-items-center mv-20">
+        <div className='flex gap-10 justify-center align-items-center c-danger'>
+        <label className="fs-30">{langTerms(lang, modalHeader)}</label>
+        <RiErrorWarningLine />
+        </div>
       </div>
       <div className="modal-body">
-        {langTerms(lang, modalBodyText)}
+      {id ? (<p className='mt-0 fs-20 text-center'>{langTerms(lang, 'Budget')} - {name}</p>) : ('')}
+        <p className='text-center'>
+          {langTerms(lang, modalBodyText)}
+        </p>
       </div>
       {buttons && 
-      <div className="flex gap-20 mv-20">
+      <div className="flex justify-center gap-20 mv-20">
         <div onClick={()=>onHandleAlert('delete', budgetAlert)}>
           <Button
             content={langTerms(lang, "Delete")}
@@ -34,6 +40,8 @@ const Modal = ({modalHeader, modalBodyText, buttons, budgetAlert}) => {
       </div>
       }
     </div>
+    <div
+        className={showBudgetAlert ? "overlay active" : "overlay"}></div>
   </>
   )
 }
