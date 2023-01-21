@@ -4,7 +4,6 @@ import Modal from '../Modal/Modal'
 
 const AlertModal = () => {
   const {budgetAlert} = useAppContext();
-  console.log(budgetAlert);
   return (
     <>
     { budgetAlert.id && 

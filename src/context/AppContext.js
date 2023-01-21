@@ -72,11 +72,6 @@ const AppProvider = ({ children }) => {
       return [...prevBudgets, { id: uuidV4(), name, max, budgetPeriod, dateAdded }];
     });
   };
-  
-  // Update Budget
-  const updateBudget = ({ id }) => {
-    
-  };
 
   // Delete Budget
   const deleteBudget = ({ id }) => {
@@ -100,25 +95,23 @@ const AppProvider = ({ children }) => {
   const onHandleAlert = (resolution, budget) => {
     const {id} = budget
     if(resolution === 'delete') {
-      deleteBudget({id});
+      deleteBudget({id})
       setBudgetAlert({})
+      setShowBudgetAlert(false)
     }
     // if (resolution === 'repeat') {
     //   updateBudget({id, name, budgetPeriod, max, dateAdded, show:false})
     // }
-    setShowBudgetAlert(false)
+
   }
 
-  // const currentDate = new Date();
-  const currentDate = new Date(1674893827165).valueOf(); // 28
+  // const currentDate = new Date().valueOf();
+  const currentDate = new Date(1675893827165).valueOf();
 
   useEffect(() => {
-    budgets.map((budget) => {
+    budgets.forEach((budget) => {
       let alertDate = new Date(budget.budgetPeriod).valueOf()
-      console.log(budget.name, alertDate)
-      console.log('currentDate', currentDate)
       if(currentDate >= alertDate) {
-        console.log(budget.name);
         setBudgetAlert({
           id: budget.id,
           name: budget.name,
@@ -126,7 +119,7 @@ const AppProvider = ({ children }) => {
         setShowBudgetAlert(true)
       }
     })
-  },[budgets, currentDate, budgetAlert])
+  },[budgets, currentDate])
 
   return (
     <AppContext.Provider
