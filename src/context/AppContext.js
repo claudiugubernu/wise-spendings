@@ -1,44 +1,45 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
-import { v4 as uuidV4 } from "uuid";
+import { createContext, useContext, useEffect, useState } from "react"
+import useLocalStorage from "../hooks/useLocalStorage"
+import { v4 as uuidV4 } from "uuid"
+import { updatedAlertDate } from "../utils/utils"
 
-const AppContext = createContext(null);
+const AppContext = createContext(null)
 
-export const UNCATEGORIZED_BUDGET_ID = "Uncategorized";
+export const UNCATEGORIZED_BUDGET_ID = "Uncategorized"
 
 export function useAppContext() {
-  return useContext(AppContext);
+  return useContext(AppContext)
 }
 
 const AppProvider = ({ children }) => {
   // Theme
-  const [isDark, setIsDark] = useLocalStorage("theme-dark", false);
-  const theme = isDark ? "dark-theme" : "light-theme";
+  const [isDark, setIsDark] = useLocalStorage("theme-dark", false)
+  const theme = isDark ? "dark-theme" : "light-theme"
   const toggleTheme = () => {
-    setIsDark((prev) => !prev);
-  };
+    setIsDark((prev) => !prev)
+  }
 
   // Lang
-  const [lang, setLang] = useLocalStorage("lang", "en");
+  const [lang, setLang] = useLocalStorage("lang", "en")
   const onSetLang = (e) => {
-    setLang(e.target.value);
-  };
+    setLang(e.target.value)
+  }
 
   // Currency
-  const [currency, setCurrency] = useLocalStorage("currency", "GBP");
+  const [currency, setCurrency] = useLocalStorage("currency", "GBP")
   const onSetCurrency = (e) => {
-    setCurrency(e.target.value);
-  };
+    setCurrency(e.target.value)
+  }
 
   // Sort Expenses by Date
-  const [sortByDate, setSortByDate] = useLocalStorage("sortByDate", false);
+  const [sortByDate, setSortByDate] = useLocalStorage("sortByDate", false)
   const onSortByDate = () => {
     setSortByDate((prev)=> !prev)
   }
 
   // Budget & Expenses
-  const [budgets, setBudgets] = useLocalStorage("budgets", []);
-  const [expenses, setExpenses] = useLocalStorage("expenses", []);
+  const [budgets, setBudgets] = useLocalStorage("budgets", [])
+  const [expenses, setExpenses] = useLocalStorage("expenses", [])
   
   // Add Expense
   const addExpense = ({ description, date, amount, budgetId }) => {
@@ -46,21 +47,21 @@ const AppProvider = ({ children }) => {
       return [
         ...prevExpenses,
         { id: uuidV4(), description, date, amount, budgetId },
-      ];
-    });
-  };
+      ]
+    })
+  }
   
   // Delete Expense
   const deleteExpense = ({ id }) => {
     setExpenses((prevExpense) => {
-      return prevExpense.filter((expense) => expense.id !== id);
-    });
-  };
+      return prevExpense.filter((expense) => expense.id !== id)
+    })
+  }
   
   // Get Budget expesnses
   const getBudgetExpenses = (budgetId) => {
-    return expenses.filter((expense) => expense.budgetId === budgetId);
-  };
+    return expenses.filter((expense) => expense.budgetId === budgetId)
+  }
 
   // Add Budget
   const addBudget = ({ name, max, budgetPeriod, dateAdded, alertLength }) => {
@@ -68,59 +69,48 @@ const AppProvider = ({ children }) => {
       // If we already have something with same name return originial budget
       if (prevBudgets.find((budget) => budget.name.toLowerCase() === name.toLowerCase())) {
         alert('A budget with that name has been found.')
-        return prevBudgets;
+        return prevBudgets
       }
-      return [...prevBudgets, { id: uuidV4(), name, max, budgetPeriod, dateAdded, alertLength }];
-    });
-  };
+      return [...prevBudgets, { id: uuidV4(), name, max, budgetPeriod, dateAdded, alertLength }]
+    })
+  }
 
   // Update Budget
   const updateBudget = ({ id, budgetPeriod, alertLength }) => {
-    // console.log(id, budgetAlert, alertLength)
-    let updatedAlertDate = new Date();
-    setBudgets((prevBudgets) => {
-      
+    const updatedAlert = updatedAlertDate(alertLength, budgetPeriod)
+    const newBudgets = budgets.map((budget) => {
+      if (budget.id === id) {
+        return {...budget, budgetPeriod: updatedAlert}
+      }
+      return budget
     })
-    // setBudgets((prevBudgets) => prevBudgets.forEach(budget => {
-    //   let updatedAlertDate = new Date();
-    //   if ( alertLength === 'week') {
-    //     updatedAlertDate.setDate(new Date(budgetPeriod).getDate() + 40)
-    //   }
-    //   if ( alertLength === 'month') {
-    //     updatedAlertDate.setDate(new Date(budgetPeriod).getDate() + 30)
-    //   }
-    //   if ( alertLength === 'year') {
-    //     updatedAlertDate.setDate(new Date(budgetPeriod).getDate() + 365)
-    //   }
-    //   // Create a *new* object with changes
-    //   return [...prevBudgets, {...budget, budgetPeriod: updatedAlertDate}]
-    // }))
-    // setExpenses((prevExpenses) => {
-    //   return prevExpenses.map((expense) => {
-    //     if (expense.budgetId !== id) return expense;
-    //     // If budget has expense move to uncategorized
-    //     return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
-    //   });
-    // });
+    const newExpenses = expenses.map((expense) => {
+      if (expense.budgetId === id) {
+        return {...expense, budgetId: UNCATEGORIZED_BUDGET_ID }
+      }
+      return expense
+    })
+    setBudgets(newBudgets)
+    setExpenses(newExpenses)
   }
 
   // Delete Budget
   const deleteBudget = ({ id }) => {
     setExpenses((prevExpenses) => {
       return prevExpenses.map((expense) => {
-        if (expense.budgetId !== id) return expense;
+        if (expense.budgetId !== id) return expense
         // If budget has expense move to uncategorized
-        return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
-      });
-    });
+        return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID }
+      })
+    })
 
     setBudgets((prevBudgets) => {
-      return prevBudgets.filter((budget) => budget.id !== id);
-    });
-  };
+      return prevBudgets.filter((budget) => budget.id !== id)
+    })
+  }
 
   // Alerts
-  const [budgetAlert, setBudgetAlert] = useState({});
+  const [budgetAlert, setBudgetAlert] = useState({})
   const [showBudgetAlert, setShowBudgetAlert] = useState(false)
     
   const onHandleAlert = (resolution, budget) => {
@@ -131,14 +121,12 @@ const AppProvider = ({ children }) => {
     }
     if (resolution === 'repeat') {
       updateBudget({id, budgetPeriod, alertLength})
-      // moveExpenseToUncategorized({id});
       setBudgetAlert({})
     }
     setShowBudgetAlert(false)
   }
 
-  // const currentDate = new Date().valueOf();
-  const currentDate = new Date(1675893827165).valueOf();
+  const currentDate = new Date().valueOf()
 
   useEffect(() => {
     budgets.forEach((budget) => {
@@ -181,7 +169,7 @@ const AppProvider = ({ children }) => {
     >
       {children}
     </AppContext.Provider>
-  );
-};
+  )
+}
 
-export default AppProvider;
+export default AppProvider
