@@ -3,6 +3,7 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import Button from "../Button/Button";
 import { langTerms } from "../../static/langTerms";
 import { useAppContext } from "../../context/AppContext";
+import { updatedAlertDate } from "../../utils/utils";
 
 const AddBudgetModal = ({ show, handleClose }) => {
   const formRef = useRef();
@@ -12,23 +13,13 @@ const AddBudgetModal = ({ show, handleClose }) => {
   const { addBudget, lang } = useAppContext();
   const handleSubmit = (e) => {
     e.preventDefault();
-    const date = new Date();
-    let budgetPeriod = new Date();
-
-    if ( budgetPeriodRef.current.value === 'week') {
-      budgetPeriod.setDate(new Date(date.getDate() + 7))
-    }
-    if ( budgetPeriodRef.current.value === 'month') {
-      budgetPeriod.setDate(new Date(date.getDate() + 30))
-    }
-    if ( budgetPeriodRef.current.value === 'year') {
-      budgetPeriod.setDate(new Date(date.getDate() + 365))
-    }
+    const budgetPeriod = updatedAlertDate(budgetPeriodRef.current.value);
 
     addBudget({
       name: nameRef.current.value,
       max: parseFloat(maxRef.current.value),  
       budgetPeriod: budgetPeriod,
+      alertLength: budgetPeriodRef.current.value,
       dateAdded: new Date()
     });
     formRef.current.reset();

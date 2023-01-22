@@ -22,3 +22,23 @@ export const formatDate = (date, format) => {
   }
   return format.replace(/mm|dd|yyyy/gi, matched => map[matched])
 }
+
+export const updatedAlertDate = (timeframe) => {
+  const today = new Date();
+  let newDate = new Date();
+  switch(timeframe) {
+    case 'week': 
+      newDate.setDate(new Date(today).getDate() + 7)
+      break;
+    case 'month': 
+      newDate.setDate(new Date(today).getDate() + 30)
+      break;
+    case 'year': 
+      newDate.setDate(new Date(today).getDate() + 365)
+      break;
+    default:
+      console.log('no timeframe offered')
+      break;
+  }
+  return newDate;
+}

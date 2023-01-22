@@ -57,22 +57,52 @@ const AppProvider = ({ children }) => {
     });
   };
   
-  // Get Budget
+  // Get Budget expesnses
   const getBudgetExpenses = (budgetId) => {
     return expenses.filter((expense) => expense.budgetId === budgetId);
   };
 
   // Add Budget
-  const addBudget = ({ name, max, budgetPeriod, dateAdded }) => {
+  const addBudget = ({ name, max, budgetPeriod, dateAdded, alertLength }) => {
     setBudgets((prevBudgets) => {
       // If we already have something with same name return originial budget
       if (prevBudgets.find((budget) => budget.name.toLowerCase() === name.toLowerCase())) {
         alert('A budget with that name has been found.')
         return prevBudgets;
       }
-      return [...prevBudgets, { id: uuidV4(), name, max, budgetPeriod, dateAdded }];
+      return [...prevBudgets, { id: uuidV4(), name, max, budgetPeriod, dateAdded, alertLength }];
     });
   };
+
+  // Update Budget
+  const updateBudget = ({ id, budgetPeriod, alertLength }) => {
+    // console.log(id, budgetAlert, alertLength)
+    let updatedAlertDate = new Date();
+    setBudgets((prevBudgets) => {
+      
+    })
+    // setBudgets((prevBudgets) => prevBudgets.forEach(budget => {
+    //   let updatedAlertDate = new Date();
+    //   if ( alertLength === 'week') {
+    //     updatedAlertDate.setDate(new Date(budgetPeriod).getDate() + 40)
+    //   }
+    //   if ( alertLength === 'month') {
+    //     updatedAlertDate.setDate(new Date(budgetPeriod).getDate() + 30)
+    //   }
+    //   if ( alertLength === 'year') {
+    //     updatedAlertDate.setDate(new Date(budgetPeriod).getDate() + 365)
+    //   }
+    //   // Create a *new* object with changes
+    //   return [...prevBudgets, {...budget, budgetPeriod: updatedAlertDate}]
+    // }))
+    // setExpenses((prevExpenses) => {
+    //   return prevExpenses.map((expense) => {
+    //     if (expense.budgetId !== id) return expense;
+    //     // If budget has expense move to uncategorized
+    //     return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
+    //   });
+    // });
+  }
 
   // Delete Budget
   const deleteBudget = ({ id }) => {
@@ -94,16 +124,17 @@ const AppProvider = ({ children }) => {
   const [showBudgetAlert, setShowBudgetAlert] = useState(false)
     
   const onHandleAlert = (resolution, budget) => {
-    const {id} = budget
+    const {id, budgetPeriod, alertLength} = budget
     if(resolution === 'delete') {
       deleteBudget({id})
       setBudgetAlert({})
-      setShowBudgetAlert(false)
     }
-    // if (resolution === 'repeat') {
-    //   updateBudget({id, name, budgetPeriod, max, dateAdded, show:false})
-    // }
-
+    if (resolution === 'repeat') {
+      updateBudget({id, budgetPeriod, alertLength})
+      // moveExpenseToUncategorized({id});
+      setBudgetAlert({})
+    }
+    setShowBudgetAlert(false)
   }
 
   // const currentDate = new Date().valueOf();
@@ -116,6 +147,8 @@ const AppProvider = ({ children }) => {
         setBudgetAlert({
           id: budget.id,
           name: budget.name,
+          alertLength: budget.alertLength,
+          budgetPeriod: budget.budgetPeriod
         })
         setShowBudgetAlert(true)
       }
