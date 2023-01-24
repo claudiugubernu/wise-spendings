@@ -33,6 +33,12 @@ export const updatedAlertDate = (timeframe, alertDate) => {
     case 'month': 
       newDate.setDate(new Date(alertDate).getDate() + 30)
       break;
+    case 'quarterly': 
+      newDate.setDate(new Date(alertDate).getDate() + 91)
+      break;
+    case 'halfYear': 
+      newDate.setDate(new Date(alertDate).getDate() + 182)
+      break;
     case 'year': 
       newDate.setDate(new Date(alertDate).getDate() + 365)
       break;
