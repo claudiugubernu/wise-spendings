@@ -56,6 +56,8 @@ const AddBudgetModal = ({ show, handleClose }) => {
             <select id="budgetPeriod" ref={budgetPeriodRef} required>
               <option value="week">{langTerms(lang, "One Week")}</option>
               <option value="month">{langTerms(lang, "One Month")}</option>
+              <option value="quarterly">{langTerms(lang, "Three Months")}</option>
+              <option value="halfYear">{langTerms(lang, "Six Months")}</option>
               <option value="year">{langTerms(lang, "One Year")}</option>
             </select>
             </div>

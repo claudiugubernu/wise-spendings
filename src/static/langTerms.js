@@ -71,6 +71,20 @@ export function langTerms($language, $term) {
       },
     },
     {
+      term: "Three Months",
+      lang: {
+        en: "Three Months",
+        ro: "Trei Luni",
+      },
+    },
+    {
+      term: "Six Months",
+      lang: {
+        en: "Six Months",
+        ro: "Șase Luni",
+      },
+    },
+    {
       term: "One Year",
       lang: {
         en: "One Year",
@@ -209,7 +223,7 @@ export function langTerms($language, $term) {
         en: "Your budget period has come to an end. How would you like to proceed ?",
         ro: "Perioada bugetului dumneavoastră a ajuns la sfârșit. Cum doriti să procedati ?",
       },
-    },
+    }
   ];
   // Filter the array and return the result
   function filterIt(array, value, key) {
