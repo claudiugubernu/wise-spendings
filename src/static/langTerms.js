@@ -223,6 +223,13 @@ export function langTerms($language, $term) {
         en: "Your budget period has come to an end. How would you like to proceed ?",
         ro: "Perioada bugetului dumneavoastră a ajuns la sfârșit. Cum doriti să procedati ?",
       },
+    },
+    {
+      term: "Icon",
+      lang: {
+        en: "Icon",
+        ro: "Icoană",
+      },
     }
   ];
   // Filter the array and return the result
