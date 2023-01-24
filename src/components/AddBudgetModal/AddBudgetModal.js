@@ -37,6 +37,7 @@ const AddBudgetModal = ({ show, handleClose }) => {
       icon: iconId
     });
     formRef.current.reset();
+    setIconId('wallet');
     handleClose();
   };
   return (
