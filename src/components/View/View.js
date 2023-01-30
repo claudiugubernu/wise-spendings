@@ -22,7 +22,7 @@ const View = () => {
 
   return (
     <main className="site-width h-100">
-      <div className="view-controlls flex flex-wrap m-justify-between align-items-center mv-50 m-mv-50">
+      <div className="view-controls flex flex-wrap m-justify-between align-items-center mv-50 m-mv-50">
         <div
           className="mr-50 m-mr-0"
           onClick={() => setShowAddBudgetModal(true)}

@@ -130,7 +130,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     budgets.forEach((budget) => {
-      let alertDate = new Date(budget.budgetPeriod).valueOf()
+      let alertDate = new Date(budget.budgetPeriod).setHours(0,0,0,0).valueOf();
       if(currentDate >= alertDate) {
         setBudgetAlert({
           id: budget.id,
