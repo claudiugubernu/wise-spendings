@@ -31,22 +31,9 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
     <>
       <div className={budgetId != null ? "modal expenses show" : "modal"}>
         <div className="modal-header flex justify-between align-items-center mv-20">
-          <label className="">
+          <label>
             {langTerms(lang, "Expenses")} -{budget?.name}
           </label>
-          {budgetId !== UNCATEGORIZED_BUDGET_ID && (
-            <div
-              onClick={() => {
-                deleteBudget(budget);
-                handleClose();
-              }}
-            >
-              <Button
-                content={langTerms(lang, "Delete")}
-                variant="btn-outline-danger"
-              />
-            </div>
-          )}
           <IoCloseCircleOutline onClick={handleClose} />
         </div>
         <div className="modal-body">
@@ -68,6 +55,22 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
             </div>
           ))}
         </div>
+      {budgetId !== UNCATEGORIZED_BUDGET_ID && (
+        <div className="modal-footer flex mt-10 pt-10">
+            <div
+              className="ml-auto"
+              onClick={() => {
+                deleteBudget(budget);
+                handleClose();
+              }}
+            >
+              <Button
+                content={langTerms(lang, "Delete")}
+                variant="btn-outline-danger"
+              />
+            </div>
+        </div>
+      )}
       </div>
       <div
         className={budgetId != null ? "overlay active" : "overlay"}
