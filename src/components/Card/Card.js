@@ -45,8 +45,8 @@ const Card = ({
   return (
     <div className={`card ${classNames.join(" ")}`}>
       <div className="card-header flex flex-column v-gap-10">
-        <div className="flex justify-between">
-          <div className="flex gap-10 align-items-center fs-20">
+        <div className="flex flex-wrap justify-between">
+          <div className="flex gap-10 align-items-center fs-20 w-100">
             {icon}
             <p className="title fs-20 m-0 tt-capitalize">{name}</p>
           </div>
