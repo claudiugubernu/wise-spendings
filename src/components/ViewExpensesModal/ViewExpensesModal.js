@@ -32,7 +32,7 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
       <div className={budgetId != null ? "modal expenses show" : "modal"}>
         <div className="modal-header flex justify-between align-items-center mv-20">
           <label>
-            {langTerms(lang, "Expenses")} -{budget?.name}
+            {langTerms(lang, "Expenses")} - {budget?.name}
           </label>
           <IoCloseCircleOutline onClick={handleClose} />
         </div>
