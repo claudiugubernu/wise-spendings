@@ -7,6 +7,7 @@ import AddExpenseModal from "../AddExpenseModal/AddExpenseModal";
 import CardGrid from "../CardGrid/CardGrid";
 import ViewExpensesModal from "../ViewExpensesModal/ViewExpensesModal";
 import AlertModal from "../AlertModal/AlertModal";
+import ToggleView from "../ToggleView/ToggleView";
 
 const View = () => {
   const { lang } = useAppContext();
@@ -22,7 +23,7 @@ const View = () => {
 
   return (
     <main className="site-width h-100">
-      <div className="view-controls flex flex-wrap m-justify-between align-items-center mv-50 m-mv-50">
+      <div className="view-controls flex flex-wrap justify-between align-items-center mv-50 m-mv-50">
         <div
           className="mr-50 m-mr-0"
           onClick={() => setShowAddBudgetModal(true)}
@@ -32,12 +33,7 @@ const View = () => {
             variant={"btn-primary"}
           />
         </div>
-        <div onClick={openAddExpenseModal}>
-          <Button
-            content={langTerms(lang, "Add Expense")}
-            variant={"btn-outline-primary"}
-          />
-        </div>
+        <ToggleView />
       </div>
       <CardGrid
         openAddExpenseModal={openAddExpenseModal}
