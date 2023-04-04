@@ -93,12 +93,15 @@ const Card = ({
                 variant={"btn-primary m-w-100"}
               />
             </div>
-            <div onClick={onViewExpensesClick}>
-              <Button
-                content={langTerms(lang, "View Expenses")}
-                variant={"btn-outline-primary m-w-100"}
-              />
-            </div>
+            {
+              amount >= 1 &&
+              <div onClick={onViewExpensesClick}>
+                <Button
+                  content={langTerms(lang, "View Expenses")}
+                  variant={"btn-outline-primary m-w-100"}
+                />
+              </div>
+            }
           </div>
         )}
       </div>

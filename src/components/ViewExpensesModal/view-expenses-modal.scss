@@ -1,4 +1,19 @@
 .expenses {
+  padding: 10px 25px;
+
+  @include sm-up() {
+    @include rs('padding-top', $ss, 10);
+    @include rs('padding-right', $ss, 25);
+    @include rs('padding-bottom', $ss, 10);
+    @include rs('padding-left', $ss, 25);
+  }
+
+  .modal-header {
+    border-bottom: 1px solid var(--color-primary);
+    padding-bottom: 10px;
+    margin-bottom: 0;
+  }
+
   .modal-body  {
     max-height: 350px;
     overflow-y: scroll;
