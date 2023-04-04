@@ -11,8 +11,8 @@ const ToggleView = () => {
         <div className="switches-container">
             <input type="radio" id="budget" name="switchPlan" value="budget" onChange={(e) => setToggleView(e)}/>
             <input type="radio" id="savings" name="switchPlan" value="savings" onChange={(e) => setToggleView(e)}/>
-            <label htmlFor="budget">Budget</label>
-            <label htmlFor="savings">Savings</label>
+            <label htmlFor="budget">{langTerms(lang, "Budget")}</label>
+            <label htmlFor="savings">{langTerms(lang,"Savings")}</label>
             <div className="switch-wrapper">
                 <div className="switch"></div>
             </div>

@@ -230,6 +230,20 @@ export function langTerms($language, $term) {
         en: "Icon",
         ro: "Icoană",
       },
+    },
+    {
+      term: "Budget",
+      lang: {
+        en: "Budget",
+        ro: "Buget",
+      },
+    },
+    {
+      term: "Savings",
+      lang: {
+        en: "Savings",
+        ro: "Economii",
+      },
     }
   ];
   // Filter the array and return the result
