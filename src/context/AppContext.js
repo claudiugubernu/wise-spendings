@@ -143,6 +143,13 @@ const AppProvider = ({ children }) => {
     })
   },[budgets, currentDate])
 
+  // Toggle View
+  const [toggleView, setToggleView] = useState('budget');
+
+  const onToggleView = (e) => {
+    setToggleView(e.target.id);
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -164,7 +171,9 @@ const AppProvider = ({ children }) => {
         sortByDate,
         budgetAlert,
         showBudgetAlert,
-        onHandleAlert
+        onHandleAlert,
+        toggleView,
+        onToggleView
       }}
     >
       {children}

@@ -10,7 +10,7 @@ import AlertModal from "../AlertModal/AlertModal";
 import ToggleView from "../ToggleView/ToggleView";
 
 const View = () => {
-  const { lang } = useAppContext();
+  const { lang, toggleView } = useAppContext();
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
   const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState();
@@ -20,6 +20,8 @@ const View = () => {
     setShowAddExpenseModal(true);
     setAddExpenseModalBudgetId(budgetId);
   };
+
+  console.log(toggleView);
 
   return (
     <main className="site-width h-100">
@@ -35,24 +37,36 @@ const View = () => {
         </div>
         <ToggleView />
       </div>
-      <CardGrid
-        openAddExpenseModal={openAddExpenseModal}
-        setViewExpensesModalBudgetId={setViewExpensesModalBudgetId}
-      />
-      <AddBudgetModal
-        show={showAddBudgetModal}
-        handleClose={() => setShowAddBudgetModal(false)}
-      />
-      <AddExpenseModal
-        show={showAddExpenseModal}
-        defaultBudgetID={addExpenseModalBudgetId}
-        handleClose={() => setShowAddExpenseModal(false)}
-      />
-      <ViewExpensesModal
-        budgetId={viewExpensesModalBudgetId}
-        handleClose={() => setViewExpensesModalBudgetId()}
-      />
-      <AlertModal />
+
+      { 
+        toggleView === 'budget' ? 
+        (
+          <>
+          <CardGrid
+            openAddExpenseModal={openAddExpenseModal}
+            setViewExpensesModalBudgetId={setViewExpensesModalBudgetId}
+          />
+          <AddBudgetModal
+            show={showAddBudgetModal}
+            handleClose={() => setShowAddBudgetModal(false)}
+          />
+          <AddExpenseModal
+            show={showAddExpenseModal}
+            defaultBudgetID={addExpenseModalBudgetId}
+            handleClose={() => setShowAddExpenseModal(false)}
+          />
+          <ViewExpensesModal
+            budgetId={viewExpensesModalBudgetId}
+            handleClose={() => setViewExpensesModalBudgetId()}
+          />
+          <AlertModal />
+          </>
+        ) 
+        :
+        (
+          <div>Savings</div>
+        )
+      }
     </main>
   );
 };
