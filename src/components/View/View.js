@@ -24,15 +24,27 @@ const View = () => {
   return (
     <main className="site-width h-100">
       <div className="view-controls flex flex-wrap justify-between align-items-center mv-50 m-mv-50">
-        <div
-          className="mr-50 m-mr-0"
-          onClick={() => setShowAddBudgetModal(true)}
-        >
-          <Button
-            content={langTerms(lang, "Add Budget")}
-            variant={"btn-primary"}
-          />
-        </div>
+        {
+          toggleView === 'budget' ?
+          <div
+            className="mr-50 m-mr-0"
+            onClick={() => setShowAddBudgetModal(true)}
+          >
+            <Button
+              content={langTerms(lang, "Add Budget")}
+              variant={"btn-primary"}
+            />
+          </div> : 
+          <div
+            className="mr-50 m-mr-0"
+            onClick={() => setShowAddBudgetModal(true)}
+          >
+            <Button
+              content={langTerms(lang, "Add Savings Account")}
+              variant={"btn-primary"}
+            />
+          </div>
+        }
         <ToggleView />
       </div>
 

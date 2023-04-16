@@ -116,8 +116,9 @@
             transition: opacity .2s cubic-bezier(.77, 0, .175, 1) .125s;
             will-change: opacity;
             position: absolute;
-            top: 0;
+            top: -2px;
             left: 0;
+            user-select: none;
         }
         
         /* slide the switch box from right to left */

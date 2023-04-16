@@ -244,6 +244,13 @@ export function langTerms($language, $term) {
         en: "Savings",
         ro: "Economii",
       },
+    },
+    {
+      term: "Add Savings Account",
+      lang: {
+        en: "Add Savings Account",
+        ro: "Adaugă cont economii",
+      },
     }
   ];
   // Filter the array and return the result
