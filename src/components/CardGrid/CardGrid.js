@@ -8,7 +8,7 @@ import UncategorizedBudgetCard from "../UncategorizedBudgetCard/UncategorizedBud
 import { budgetIcons } from "../../static/budgetIcons";
 
 const CardGrid = ({ openAddExpenseModal, setViewExpensesModalBudgetId }) => {
-  const { budgets, getBudgetExpenses, currency, lang } = useAppContext();
+  const { budgets, getBudgetExpenses, currency, lang, hasCardOptions, deleteBudget } = useAppContext();
   return (
     <div className="card-grid">
       {budgets.map((budget) => {
@@ -28,6 +28,9 @@ const CardGrid = ({ openAddExpenseModal, setViewExpensesModalBudgetId }) => {
             onAddExpenseClick={() => openAddExpenseModal(budget.id)}
             onViewExpensesClick={() => setViewExpensesModalBudgetId(budget.id)}
             lang={lang}
+            hasCardOptions={hasCardOptions}
+            budget={budget}
+            deleteBudget={deleteBudget}
           />
         );
       })}

@@ -37,6 +37,9 @@ const AppProvider = ({ children }) => {
     setSortByDate((prev)=> !prev)
   }
 
+  // Card Options
+  const hasCardOptions = true;
+
   // Budget & Expenses
   const [budgets, setBudgets] = useLocalStorage("budgets", [])
   const [expenses, setExpenses] = useLocalStorage("expenses", [])
@@ -173,7 +176,8 @@ const AppProvider = ({ children }) => {
         showBudgetAlert,
         onHandleAlert,
         toggleView,
-        onToggleView
+        onToggleView,
+        hasCardOptions
       }}
     >
       {children}

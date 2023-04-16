@@ -16,7 +16,11 @@ const Card = ({
   onViewExpensesClick,
   lang,
   isDark,
+  hasCardOptions,
+  budget,
+  deleteBudget
 }) => {
+  // const {id} = budget;
   const classNames = [];
   // Set clases for cardBackground
   if (amount > max) {
@@ -42,10 +46,19 @@ const Card = ({
     }, 1500)
   }
 
+  const [showCardOptions, setShowCardOptions] = useState(false);
+
+  const onShowCardOptions = (e, budgetId) => {
+    if(e.currentTarget.id === budgetId) {
+      setShowCardOptions((prev) => !prev);
+    }
+  }
+
   return (
     <div className={`card ${classNames.join(" ")}`}>
       <div className="card-header flex flex-column v-gap-10">
-        <div className="flex flex-wrap justify-between">
+        <div className="flex justify-between align-items-start">
+           <div className="flex flex-wrap justify-between">
           <div className="flex gap-10 align-items-center fs-20 w-100">
             {icon}
             <p className="title fs-20 m-0 tt-capitalize">{name}</p>
@@ -69,6 +82,28 @@ const Card = ({
               )
             }
           </div>
+        </div>
+        {
+          hasCardOptions &&
+          <div className="card-options" id={budget.id} onClick={(e) => onShowCardOptions(e, budget.id)}>
+            <span>...</span>
+          </div>
+        }
+        {
+          showCardOptions &&
+          <div className="card-options-modal">
+            <div
+              className="ml-auto option"
+              id={budget.id}
+              onClick={(e) => {
+                deleteBudget(budget);
+                onShowCardOptions(e, budget.id);
+              }}
+            >
+              <p>{langTerms(lang, "Delete")}</p>
+            </div>
+          </div>
+        }
         </div>
         <div className="budget-alert">
           { 

@@ -21,8 +21,6 @@ const View = () => {
     setAddExpenseModalBudgetId(budgetId);
   };
 
-  console.log(toggleView);
-
   return (
     <main className="site-width h-100">
       <div className="view-controls flex flex-wrap justify-between align-items-center mv-50 m-mv-50">
