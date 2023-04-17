@@ -251,6 +251,27 @@ export function langTerms($language, $term) {
         en: "Add Savings Account",
         ro: "Adaugă cont economii",
       },
+    },
+    {
+      term: "Savings Account",
+      lang: {
+        en: "Savings Account",
+        ro: "Cont economii",
+      },
+    },
+    {
+      term: "Target",
+      lang: {
+        en: "Target",
+        ro: "Obiectiv",
+      },
+    },
+    {
+      term: "Interest(%p.a.)",
+      lang: {
+        en: "Interest(%p.a.)",
+        ro: "Dobândă(%p.a.)",
+      },
     }
   ];
   // Filter the array and return the result

@@ -16,8 +16,8 @@ const ToggleView = () => {
             <label htmlFor="savings">{langTerms(lang,"Savings")}</label>
             <div className="switch-wrapper">
                 <div className="switch">
-                    <div>Budget</div>
-                    <div>Savings</div>
+                    <div>{langTerms(lang, "Budget")}</div>
+                    <div>{langTerms(lang,"Savings")}</div>
                 </div>
             </div>
         </div>

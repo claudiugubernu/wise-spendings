@@ -43,6 +43,7 @@ const AppProvider = ({ children }) => {
   // Budget & Expenses
   const [budgets, setBudgets] = useLocalStorage("budgets", [])
   const [expenses, setExpenses] = useLocalStorage("expenses", [])
+  const [savingAccount, setSavingAccount] = useLocalStorage("savings", {});
   
   // Add Expense
   const addExpense = ({ description, date, amount, budgetId }) => {
@@ -112,6 +113,18 @@ const AppProvider = ({ children }) => {
     })
   }
 
+  // Add Savings 
+  const addSavingAccount = ({name, max, interest, dateAdded, icon}) => {
+    setSavingAccount( {...savingAccount, id: uuidV4(), name, max, interest, dateAdded, icon})
+  }
+  
+  // Delete Savings 
+  const deleteSavingAccount = ({id}) => {
+    if(savingAccount.id === id) {
+      setSavingAccount({})
+    }
+  }
+
   // Alerts
   const [budgetAlert, setBudgetAlert] = useState({})
   const [showBudgetAlert, setShowBudgetAlert] = useState(false)
@@ -177,7 +190,10 @@ const AppProvider = ({ children }) => {
         onHandleAlert,
         toggleView,
         onToggleView,
-        hasCardOptions
+        hasCardOptions,
+        addSavingAccount,
+        deleteSavingAccount,
+        savingAccount
       }}
     >
       {children}
