@@ -3,6 +3,7 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 import Button from "../Button/Button";
 import { langTerms } from "../../static/langTerms";
 import { useState } from "react";
+import {ImBin} from 'react-icons/im';
 
 const Card = ({
   currency,
@@ -20,7 +21,6 @@ const Card = ({
   budget,
   deleteBudget
 }) => {
-  // const {id} = budget;
   const classNames = [];
   // Set clases for cardBackground
   if (amount > max) {
@@ -93,13 +93,14 @@ const Card = ({
           showCardOptions &&
           <div className="card-options-modal">
             <div
-              className="ml-auto option"
+              className="ml-auto option delete"
               id={budget.id}
               onClick={(e) => {
                 deleteBudget(budget);
                 onShowCardOptions(e, budget.id);
               }}
             >
+              <ImBin />
               <p>{langTerms(lang, "Delete")}</p>
             </div>
           </div>
