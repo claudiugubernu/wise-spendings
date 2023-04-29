@@ -121,9 +121,7 @@ const AppProvider = ({ children }) => {
   
   // Delete Savings 
   const deleteSavingAccount = ({id}) => {
-    setDeposits((prevDeposits) => {
-      return prevDeposits.filter((deposit) => deposit.savingsId !== id)
-    })
+    setDeposits([]);
     setSavingAccount({})
   }
 
@@ -138,8 +136,8 @@ const AppProvider = ({ children }) => {
   }
 
   // Widthdraw Savings
-  const withdrawSavigns = ({ id }) => {
-
+  const withdrawSavigns = ({ id, amount, date, savingsId }) => {
+    // 
   }
 
   // Get Deposits

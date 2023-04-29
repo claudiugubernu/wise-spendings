@@ -274,6 +274,13 @@ export function langTerms($language, $term) {
       },
     },
     {
+      term: "Interest",
+      lang: {
+        en: "Interest",
+        ro: "Dobândă",
+      },
+    },
+    {
       term: "Deposit",
       lang: {
         en: "Deposit",
@@ -299,6 +306,20 @@ export function langTerms($language, $term) {
       lang: {
         en: "Deposits",
         ro: "Depozite",
+      },
+    },
+    {
+      term: "Close Account",
+      lang: {
+        en: "Close Account",
+        ro: "Închide Cont",
+      },
+    },
+    {
+      term: "Widthdraw",
+      lang: {
+        en: "Widthdraw",
+        ro: "Retrage",
       },
     }
   ];

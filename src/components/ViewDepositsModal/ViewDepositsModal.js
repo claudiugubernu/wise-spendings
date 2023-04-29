@@ -1,17 +1,19 @@
+import { useState } from "react";
 import { useAppContext } from "../../context/AppContext";
 import { currencyFormatter } from "../../utils/utils";
 import { langTerms } from "../../static/langTerms";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import Button from "../Button/Button";
+import ViewWidthdrawForm from "../ViewWidthdrawForm/ViewWidthdrawForm";
 
 const ViewDepositsModal = ({ show, savingAccount, handleClose }) =>  {
     const {
     deposits,
     deleteSavingAccount,
-    withdrawSavigns,
     currency,
     lang,
   } = useAppContext();
+  const [showForm, SetShowForm] = useState(false);
 
   return (
     <>
@@ -37,7 +39,17 @@ const ViewDepositsModal = ({ show, savingAccount, handleClose }) =>  {
             </div>
           ))}
         </div>
-        <div className="modal-footer flex mt-10 pt-10">
+        <div className="modal-footer flex mt-10 pt-20 pb-10">
+            <div
+              onClick={() => {
+                SetShowForm(true);
+              }}
+            >
+              <Button
+                content={langTerms(lang, "Widthdraw")}
+                variant="btn-outline"
+              />
+            </div>
             <div
               className="ml-auto"
               onClick={() => {
@@ -56,6 +68,11 @@ const ViewDepositsModal = ({ show, savingAccount, handleClose }) =>  {
         className={show ? "overlay active" : "overlay"}
         onClick={handleClose}
       ></div>
+      <ViewWidthdrawForm 
+        savingAccountId={savingAccount.id}
+        handleClose={() => SetShowForm(false)}
+        show={showForm}
+      />
     </>
   );
 };

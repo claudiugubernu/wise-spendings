@@ -8,12 +8,9 @@ import {ImBin} from 'react-icons/im';
 import { useAppContext } from "../../context/AppContext";
 
 const SavingsAccount = ({
-  currency,
-  name,
   green,
   hideButtons,
   openAddDepositModal,
-  onViewExpensesClick,
   lang,
   isDark,
   hasCardOptions,
@@ -21,7 +18,7 @@ const SavingsAccount = ({
   deleteSavingAccount,
   openViewDepositsModal
 }) => {
-  const { getDeposits } = useAppContext();
+  const { getDeposits, currency } = useAppContext();
   const classNames = [];
   const amount = getDeposits(savingAccount.id).reduce(
     (total, expense) => total + expense.amount,
@@ -60,7 +57,7 @@ const SavingsAccount = ({
       setShowCardOptions((prev) => !prev);
     }
   }
-
+  
   return (
     <div className={`card ${classNames.join(" ")}`}>
       <div className="card-header flex flex-column v-gap-10">
@@ -108,13 +105,13 @@ const SavingsAccount = ({
               }}
             >
               <ImBin />
-              <p>{langTerms(lang, "Delete")}</p>
+              <p>{langTerms(lang, "Close Account")}</p>
             </div>
           </div>
         }
         </div>
       </div>
-      <p className="fs-12 m-0">*Interest {savingAccount.interest}% p.a.</p>
+      <p className="fs-12 m-0">{langTerms(lang, "Interest")} {savingAccount.interest}% p.a.</p>
       <div className="card-body">
         {savingAccount.max && (
             <ProgressBar
