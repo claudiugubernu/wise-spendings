@@ -293,6 +293,13 @@ export function langTerms($language, $term) {
         en: "View Deposits",
         ro: "Vezi Depozitele",
       },
+    },
+    {
+      term: "Deposits",
+      lang: {
+        en: "Deposits",
+        ro: "Depozite",
+      },
     }
   ];
   // Filter the array and return the result

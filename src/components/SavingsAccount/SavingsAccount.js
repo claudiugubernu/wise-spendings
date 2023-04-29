@@ -18,7 +18,8 @@ const SavingsAccount = ({
   isDark,
   hasCardOptions,
   savingAccount,
-  deleteSavingAccount
+  deleteSavingAccount,
+  openViewDepositsModal
 }) => {
   const { getDeposits } = useAppContext();
   const classNames = [];
@@ -131,7 +132,7 @@ const SavingsAccount = ({
             </div>
             {
               amount >= 1 &&
-              <div onClick={onViewExpensesClick}>
+              <div onClick={openViewDepositsModal}>
                 <Button
                   content={langTerms(lang, "View Deposits")}
                   variant={"btn-outline-primary m-w-100"}

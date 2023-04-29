@@ -11,6 +11,7 @@ import ToggleView from "../ToggleView/ToggleView";
 import AddSavingsAccountModal from "../AddSavingsAccountModal/AddSavingsAccountModal";
 import SavingsAccount from "../SavingsAccount/SavingsAccount";
 import AddDepositModal from "../AddDepositModal/AddDepositModal";
+import ViewDepositsModal from "../ViewDepositsModal/ViewDepositsModal";
 
 const View = () => {
   const { lang, toggleView, savingAccount, deleteSavingAccount } = useAppContext();
@@ -20,6 +21,7 @@ const View = () => {
   const [addSavingsAccountModal, setAddSavingsAccountModal] = useState(false);
   const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState();
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState();
+  const [viewDepositsModal, setViewDepositsModal] = useState(false);
 
   const openAddExpenseModal = (budgetId) => {
     setShowAddExpenseModal(true);
@@ -28,6 +30,10 @@ const View = () => {
 
   const openAddDepositModal = () => {
     setShowAddDepositModal(true);
+  }
+  
+  const openViewDepositsModal = () => {
+    setViewDepositsModal(true);
   }
 
   return (
@@ -98,11 +104,17 @@ const View = () => {
                 lang={lang}
                 deleteSavingAccount={deleteSavingAccount}
                 openAddDepositModal={openAddDepositModal}
+                openViewDepositsModal={openViewDepositsModal}
               />
               <AddDepositModal 
                 show={showaddDepositModal}
                 savingAccountId={savingAccount.id}  
                 handleClose={() => setShowAddDepositModal(false)}
+              />
+              <ViewDepositsModal 
+                show={viewDepositsModal}
+                savingAccount={savingAccount} 
+                handleClose={() => setViewDepositsModal(false)}
               />
               </>
             }

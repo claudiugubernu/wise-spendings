@@ -121,9 +121,10 @@ const AppProvider = ({ children }) => {
   
   // Delete Savings 
   const deleteSavingAccount = ({id}) => {
-    if(savingAccount.id === id) {
-      setSavingAccount({})
-    }
+    setDeposits((prevDeposits) => {
+      return prevDeposits.filter((deposit) => deposit.savingsId !== id)
+    })
+    setSavingAccount({})
   }
 
   // Deposit Savings
@@ -217,7 +218,8 @@ const AppProvider = ({ children }) => {
         savingAccount,
         addDeposit,
         withdrawSavigns,
-        getDeposits
+        getDeposits,
+        deposits
       }}
     >
       {children}
