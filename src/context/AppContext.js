@@ -44,6 +44,7 @@ const AppProvider = ({ children }) => {
   const [budgets, setBudgets] = useLocalStorage("budgets", [])
   const [expenses, setExpenses] = useLocalStorage("expenses", [])
   const [savingAccount, setSavingAccount] = useLocalStorage("savings", {});
+  const [deposits, setDeposits] = useLocalStorage("deposits", []);
   
   // Add Expense
   const addExpense = ({ description, date, amount, budgetId }) => {
@@ -125,6 +126,26 @@ const AppProvider = ({ children }) => {
     }
   }
 
+  // Deposit Savings
+  const addDeposit = ({ amount, date, savingsId }) => {
+    setDeposits((prevDeposits) => {
+      return [
+        ...prevDeposits,
+        { id: uuidV4(), amount, date, savingsId},
+      ];
+    })
+  }
+
+  // Widthdraw Savings
+  const withdrawSavigns = ({ id }) => {
+
+  }
+
+  // Get Deposits
+  const getDeposits = (savingsId) => {
+    return deposits.filter((deposit) => deposit.savingsId === savingsId)
+  }
+
   // Alerts
   const [budgetAlert, setBudgetAlert] = useState({})
   const [showBudgetAlert, setShowBudgetAlert] = useState(false)
@@ -193,7 +214,10 @@ const AppProvider = ({ children }) => {
         hasCardOptions,
         addSavingAccount,
         deleteSavingAccount,
-        savingAccount
+        savingAccount,
+        addDeposit,
+        withdrawSavigns,
+        getDeposits
       }}
     >
       {children}

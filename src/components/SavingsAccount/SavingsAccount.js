@@ -5,13 +5,14 @@ import { langTerms } from "../../static/langTerms";
 import { useState } from "react";
 import { budgetIcons } from "../../static/budgetIcons";
 import {ImBin} from 'react-icons/im';
+import { useAppContext } from "../../context/AppContext";
 
 const SavingsAccount = ({
   currency,
   name,
   green,
   hideButtons,
-  onAddExpenseClick,
+  openAddDepositModal,
   onViewExpensesClick,
   lang,
   isDark,
@@ -19,8 +20,12 @@ const SavingsAccount = ({
   savingAccount,
   deleteSavingAccount
 }) => {
+  const { getDeposits } = useAppContext();
   const classNames = [];
-  let amount = 0;
+  const amount = getDeposits(savingAccount.id).reduce(
+    (total, expense) => total + expense.amount,
+    0
+  );
   // Set clases for cardBackground
   if (amount > savingAccount.max) {
     classNames.push("bg-opacity-10 c-white");
@@ -30,21 +35,20 @@ const SavingsAccount = ({
       : classNames.push("bg-primary");
   }
 
-  // Remaining Budget Display
-  const [showRemaningBudget, setShowRemainingBudget] = useState(false);
+  // Remaining Target Display
+  const [showRemaningTarget, setShowRemainingTarget] = useState(false);
 
   // Set Icon 
   const icon = budgetIcons.map(icon => icon.id === savingAccount.icon && <div key={icon.id} className="icon-card">{icon.icon}</div>)
 
-  const overBudgetTotal = amount - savingAccount.max;
-  const remainingBudget = savingAccount.max - amount;
+  const remainingTarget = savingAccount.max - amount;
 
-  const onShowRemaningBudget = () => {
-    // Show remaining budget
-    setShowRemainingBudget((prev) => !prev)
+  const onShowRemaningTarget = () => {
+    // Show remaining Target
+    setShowRemainingTarget((prev) => !prev)
     // Hide it after 1500ms
     setTimeout(() => {
-      setShowRemainingBudget((prev) => !prev)
+      setShowRemainingTarget((prev) => !prev)
     }, 1500)
   }
 
@@ -65,10 +69,10 @@ const SavingsAccount = ({
               {icon}
               <p className="title fs-20 m-0 tt-capitalize">{savingAccount.name}</p>
             </div>
-            <div className="card-amounts flex" onClick={onShowRemaningBudget}>
+            <div className="card-amounts flex" onClick={onShowRemaningTarget}>
             {
-              showRemaningBudget && !(amount > savingAccount.max) && savingAccount.max ? (
-                <p className="m-0 fs-20">Remaining budget: {currencyFormatter(currency).format(remainingBudget)}</p>
+              showRemaningTarget && !(amount > savingAccount.max) && savingAccount.max ? (
+                <p className="m-0 fs-20">Remaining target: {currencyFormatter(currency).format(remainingTarget)}</p>
               ) : (
                 <>
                 <p className="m-0 fs-20">
@@ -108,15 +112,35 @@ const SavingsAccount = ({
           </div>
         }
         </div>
-        <div className="budget-alert">
-          { 
-            amount > savingAccount.max && (
-              <p className="m-0 fw-bold tt-uppercase">⚠️ {langTerms(lang, "Over budget by")} {currencyFormatter(currency).format(overBudgetTotal)}</p>
-            )
-          }
-        </div>
       </div>
-      <p>Interest {savingAccount.interest}%p.a.</p>
+      <p className="fs-12 m-0">*Interest {savingAccount.interest}% p.a.</p>
+      <div className="card-body">
+        {savingAccount.max && (
+            <ProgressBar
+              variant={getProgressBarVariant(amount, savingAccount.max)}
+              progress={calculateProgress(amount, savingAccount.max)}
+            />
+        )}
+        {!hideButtons && (
+          <div className="flex m-flex-column gap-20 m-gap-0 m-v-gap-20 mt-30">
+            <div onClick={openAddDepositModal}>
+              <Button
+                content={langTerms(lang, "Deposit")}
+                variant={"btn-primary m-w-100"}
+              />
+            </div>
+            {
+              amount >= 1 &&
+              <div onClick={onViewExpensesClick}>
+                <Button
+                  content={langTerms(lang, "View Deposits")}
+                  variant={"btn-outline-primary m-w-100"}
+                />
+              </div>
+            }
+          </div>
+        )}
+      </div>
     </div>
   );
 };
@@ -127,9 +151,9 @@ const calculateProgress = (amount, max) => {
 
 const getProgressBarVariant = (amount, max) => {
   const ratio = amount / max;
-  if (ratio < 0.5) return "bg-safe";
+  if (ratio < 0.5) return "bg-danger";
   if (ratio < 0.75) return "bg-warning";
-  return "bg-danger";
+  return "bg-safe";
 };
 
 export default SavingsAccount;

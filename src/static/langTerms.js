@@ -272,6 +272,27 @@ export function langTerms($language, $term) {
         en: "Interest(%p.a.)",
         ro: "Dobândă(%p.a.)",
       },
+    },
+    {
+      term: "Deposit",
+      lang: {
+        en: "Deposit",
+        ro: "Depozit",
+      },
+    },
+    {
+      term: "New Deposit",
+      lang: {
+        en: "New Deposit",
+        ro: "Depozit Nou",
+      },
+    },
+    {
+      term: "View Deposits",
+      lang: {
+        en: "View Deposits",
+        ro: "Vezi Depozitele",
+      },
     }
   ];
   // Filter the array and return the result
