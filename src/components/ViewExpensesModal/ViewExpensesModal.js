@@ -5,6 +5,8 @@ import {
 import { sliceString, currencyFormatter, sortAscending } from "../../utils/utils";
 import { langTerms } from "../../static/langTerms";
 import { IoCloseCircleOutline } from "react-icons/io5";
+import { ImBin2 } from "react-icons/im";
+
 import Button from "../Button/Button";
 
 const ViewExpensesModal = ({ budgetId, handleClose }) => {
@@ -39,18 +41,20 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
         <div className="modal-body">
           {expenses.map((expense) => (
             <div
-              className="grid align-items-center mv-20 m-mv-20"
+              className="grid align-items-center mv-10 m-mv-10"
               key={expense.id} title={expense.description}
             >
-              <p className="m-0">{sliceString(expense.description)}</p>
-              <p className="m-0">
+              <p className="expense-title m-0">{sliceString(expense.description)}</p>
+              <p className="expense-date m-0">
                 {new Date(expense.date).toLocaleDateString("en-GB")}
               </p>
-              <p className="expense-amount">
+              <p className="expense-amount m-0">
                 {currencyFormatter(currency).format(expense.amount)}
               </p>
-              <div onClick={() => deleteExpense(expense)}>
-                <Button content={"x"} variant="btn-outline-danger" />
+              <div className="expense-delete" onClick={() => deleteExpense(expense)}>
+                <button type="button" className="btn btn-outline-danger">
+                  <ImBin2 />
+                </button>
               </div>
             </div>
           ))}
