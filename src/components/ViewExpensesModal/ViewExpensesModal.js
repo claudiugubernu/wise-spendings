@@ -41,7 +41,7 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
         <div className="modal-body">
           {expenses.map((expense) => (
             <div
-              className="grid align-items-center mv-10 m-mv-10"
+              className="expense-item grid align-items-center mv-10 m-mv-10"
               key={expense.id} title={expense.description}
             >
               <p className="expense-title m-0">{sliceString(expense.description)}</p>

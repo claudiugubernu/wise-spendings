@@ -18,10 +18,12 @@
     max-height: 350px;
     overflow-y: scroll;
 
-    .grid {
+    .expense-item  {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(2, 1fr);
       gap: 5px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed var(--color-primary);
 
       .expense-title {
         grid-column: 1/2;
