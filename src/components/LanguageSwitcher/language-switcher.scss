@@ -11,8 +11,6 @@
 #dark-theme .language-switcher {
     select {
         color: var(--color-secondary);
-    }
-    option {
-        color: var(--color-primary);
+        background-color: var(--color-dark);
     }
 }
