@@ -221,7 +221,7 @@ export function langTerms($language, $term) {
       term: "Your budget period has come to an end. How would you like to proceed ?",
       lang: {
         en: "Your budget period has come to an end. How would you like to proceed ?",
-        ro: "Perioada bugetului dumneavoastră a ajuns la sfârșit. Cum doriti să procedati ?",
+        ro: "Perioada bugetului dumneavoastră a ajuns la sfârșit. Cum doriti să procedați ?",
       },
     },
     {
@@ -320,6 +320,27 @@ export function langTerms($language, $term) {
       lang: {
         en: "Widthdraw",
         ro: "Retrage",
+      },
+    },
+    {
+      term: "Choose An Option",
+      lang: {
+        en: "Choose An Option",
+        ro: "Alege o opțiune",
+      },
+    },
+    {
+      term: "Bill",
+      lang: {
+        en: "Bill",
+        ro: "Factură",
+      },
+    },
+    {
+      term: "Loan",
+      lang: {
+        en: "Loan",
+        ro: "Împrumut",
       },
     }
   ];

@@ -12,6 +12,8 @@ import AddSavingsAccountModal from "../AddSavingsAccountModal/AddSavingsAccountM
 import SavingsAccount from "../SavingsAccount/SavingsAccount";
 import AddDepositModal from "../AddDepositModal/AddDepositModal";
 import ViewDepositsModal from "../ViewDepositsModal/ViewDepositsModal";
+import ChooseCardTypeModal from "../ChooseCardTypeModal/ChooseCardTypeModal";
+import { AiOutlinePlus } from "react-icons/ai";
 
 const View = () => {
   const { lang, toggleView, savingAccount, deleteSavingAccount } = useAppContext();
@@ -22,6 +24,7 @@ const View = () => {
   const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState();
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState();
   const [viewDepositsModal, setViewDepositsModal] = useState(false);
+  const [showCardTypeModal, setShowCardTypeModal] = useState(false);
 
   const openAddExpenseModal = (budgetId) => {
     setShowAddExpenseModal(true);
@@ -41,14 +44,8 @@ const View = () => {
       <div className="view-controls flex flex-wrap justify-between align-items-center mv-50 m-mv-50">
         {
           toggleView === 'budget' &&
-          <div
-            className="mr-50 m-mr-0"
-            onClick={() => setShowAddBudgetModal(true)}
-          >
-            <Button
-              content={langTerms(lang, "Add Budget")}
-              variant={"btn-primary"}
-            />
+          <div className="open-type-btn" onClick={() => setShowCardTypeModal(true)}>
+            <button><AiOutlinePlus/></button>
           </div>
         }
         { toggleView === 'savings' && Object.keys(savingAccount).length === 0 &&
@@ -69,6 +66,24 @@ const View = () => {
         toggleView === 'budget' ? 
         (
           <>
+          <ChooseCardTypeModal 
+            show={showCardTypeModal}
+            handleClose={() => setShowCardTypeModal(false)}
+            actionType={[
+              {
+                "name": "addBudget",
+                "callback": () => setShowAddBudgetModal(true)
+              },
+              {
+                "name": "addBill",
+                "callback": () => alert('Comming Soon!')
+              },
+              {
+                "name": "addLoan",
+                "callback": () => alert('Comming Soon!')
+              }
+            ]}
+          />
           <CardGrid
             openAddExpenseModal={openAddExpenseModal}
             setViewExpensesModalBudgetId={setViewExpensesModalBudgetId}
