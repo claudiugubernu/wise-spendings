@@ -1,348 +1,348 @@
 export function langTerms($language, $term) {
   const storedTerms = [
     {
-      term: "Settings",
+      term: 'Settings',
       lang: {
-        en: "Settings",
-        ro: "Setări",
+        en: 'Settings',
+        ro: 'Setări',
       },
     },
     {
-      term: "Language",
+      term: 'Language',
       lang: {
-        en: "Language",
-        ro: "Limbă",
+        en: 'Language',
+        ro: 'Limbă',
       },
     },
     {
-      term: "English",
+      term: 'English',
       lang: {
-        en: "English",
-        ro: "Engleză",
+        en: 'English',
+        ro: 'Engleză',
       },
     },
     {
-      term: "Romanian",
+      term: 'Romanian',
       lang: {
-        en: "Romanian",
-        ro: "Română",
+        en: 'Romanian',
+        ro: 'Română',
       },
     },
     {
-      term: "Dark Mode",
+      term: 'Dark Mode',
       lang: {
-        en: "Dark Mode",
-        ro: "Mod Întunecat",
+        en: 'Dark Mode',
+        ro: 'Mod Întunecat',
       },
     },
     {
-      term: "Currency",
+      term: 'Currency',
       lang: {
-        en: "Currency",
-        ro: "Valută",
+        en: 'Currency',
+        ro: 'Valută',
       },
     },
     {
-      term: "Add Budget",
+      term: 'Add Budget',
       lang: {
-        en: "Add Budget",
-        ro: "Adaugă Buget",
+        en: 'Add Budget',
+        ro: 'Adaugă Buget',
       },
     },
     {
-      term: "Budget Period",
+      term: 'Budget Period',
       lang: {
-        en: "Budget Period",
-        ro: "Perioadă Buget",
+        en: 'Budget Period',
+        ro: 'Perioadă Buget',
       },
     },
     {
-      term: "One Week",
+      term: 'One Week',
       lang: {
-        en: "One Week",
-        ro: "O Săptămână",
+        en: 'One Week',
+        ro: 'O Săptămână',
       },
     },
     {
-      term: "One Month",
+      term: 'One Month',
       lang: {
-        en: "One Month",
-        ro: "O Lună",
+        en: 'One Month',
+        ro: 'O Lună',
       },
     },
     {
-      term: "Three Months",
+      term: 'Three Months',
       lang: {
-        en: "Three Months",
-        ro: "Trei Luni",
+        en: 'Three Months',
+        ro: 'Trei Luni',
       },
     },
     {
-      term: "Six Months",
+      term: 'Six Months',
       lang: {
-        en: "Six Months",
-        ro: "Șase Luni",
+        en: 'Six Months',
+        ro: 'Șase Luni',
       },
     },
     {
-      term: "One Year",
+      term: 'One Year',
       lang: {
-        en: "One Year",
-        ro: "Un An",
+        en: 'One Year',
+        ro: 'Un An',
       },
     },
     {
-      term: "Add Expense",
+      term: 'Add Expense',
       lang: {
-        en: "Add Expense",
-        ro: "Adaugă Cheltuială",
+        en: 'Add Expense',
+        ro: 'Adaugă Cheltuială',
       },
     },
     {
-      term: "View Expenses",
+      term: 'View Expenses',
       lang: {
-        en: "View Expenses",
-        ro: "Vezi Cheltuieli",
+        en: 'View Expenses',
+        ro: 'Vezi Cheltuieli',
       },
     },
     {
-      term: "Expenses",
+      term: 'Expenses',
       lang: {
-        en: "Expenses",
-        ro: "Cheltuieli",
+        en: 'Expenses',
+        ro: 'Cheltuieli',
       },
     },
     {
-      term: "Delete",
+      term: 'Delete',
       lang: {
-        en: "Delete",
-        ro: "Șterge",
+        en: 'Delete',
+        ro: 'Șterge',
       },
     },
     {
-      term: "Repeat",
+      term: 'Repeat',
       lang: {
-        en: "Repeat",
-        ro: "Repetă",
+        en: 'Repeat',
+        ro: 'Repetă',
       },
     },
     {
-      term: "Name",
+      term: 'Name',
       lang: {
-        en: "Name",
-        ro: "Nume",
+        en: 'Name',
+        ro: 'Nume',
       },
     },
     {
-      term: "New Budget",
+      term: 'New Budget',
       lang: {
-        en: "New Budget",
-        ro: "Buget Nou",
+        en: 'New Budget',
+        ro: 'Buget Nou',
       },
     },
     {
-      term: "Maximum Spending",
+      term: 'Maximum Spending',
       lang: {
-        en: "Maximum Spending",
-        ro: "Buget Maxim",
+        en: 'Maximum Spending',
+        ro: 'Buget Maxim',
       },
     },
     {
-      term: "Add",
+      term: 'Add',
       lang: {
-        en: "Add",
-        ro: "Adaugă",
+        en: 'Add',
+        ro: 'Adaugă',
       },
     },
     {
-      term: "New Expense",
+      term: 'New Expense',
       lang: {
-        en: "New Expense",
-        ro: "Cheltuială Nouă",
+        en: 'New Expense',
+        ro: 'Cheltuială Nouă',
       },
     },
     {
-      term: "Description",
+      term: 'Description',
       lang: {
-        en: "Description",
-        ro: "Descriere",
+        en: 'Description',
+        ro: 'Descriere',
       },
     },
     {
-      term: "Amount",
+      term: 'Amount',
       lang: {
-        en: "Amount",
-        ro: "Sumă",
+        en: 'Amount',
+        ro: 'Sumă',
       },
     },
     {
-      term: "Budget",
+      term: 'Budget',
       lang: {
-        en: "Budget",
-        ro: "Buget",
+        en: 'Budget',
+        ro: 'Buget',
       },
     },
     {
-      term: "Uncategorized",
+      term: 'Uncategorized',
       lang: {
-        en: "Uncategorized",
-        ro: "Fără categorie",
+        en: 'Uncategorized',
+        ro: 'Fără categorie',
       },
     },
     {
-      term: "Date",
+      term: 'Date',
       lang: {
-        en: "Date",
-        ro: "Dată",
+        en: 'Date',
+        ro: 'Dată',
       },
     },
     {
-      term: "Over budget by",
+      term: 'Over budget by',
       lang: {
-        en: "Over budget by",
-        ro: "Buget depășit cu",
+        en: 'Over budget by',
+        ro: 'Buget depășit cu',
       },
     },
     {
-      term: "Sort by date",
+      term: 'Sort by date',
       lang: {
-        en: "Sort by date",
-        ro: "Sortează după dată",
+        en: 'Sort by date',
+        ro: 'Sortează după dată',
       },
     },
     {
-      term: "Alert",
+      term: 'Alert',
       lang: {
-        en: "Alert",
-        ro: "Alertă",
+        en: 'Alert',
+        ro: 'Alertă',
       },
     },
     {
-      term: "Your budget period has come to an end. How would you like to proceed ?",
+      term: 'Your budget period has come to an end. How would you like to proceed ?',
       lang: {
-        en: "Your budget period has come to an end. How would you like to proceed ?",
-        ro: "Perioada bugetului dumneavoastră a ajuns la sfârșit. Cum doriti să procedați ?",
+        en: 'Your budget period has come to an end. How would you like to proceed ?',
+        ro: 'Perioada bugetului dumneavoastră a ajuns la sfârșit. Cum doriti să procedați ?',
       },
     },
     {
-      term: "Icon",
+      term: 'Icon',
       lang: {
-        en: "Icon",
-        ro: "Icoană",
+        en: 'Icon',
+        ro: 'Icoană',
       },
     },
     {
-      term: "Budget",
+      term: 'Budget',
       lang: {
-        en: "Budget",
-        ro: "Buget",
+        en: 'Budget',
+        ro: 'Buget',
       },
     },
     {
-      term: "Savings",
+      term: 'Savings',
       lang: {
-        en: "Savings",
-        ro: "Economii",
+        en: 'Savings',
+        ro: 'Economii',
       },
     },
     {
-      term: "Add Savings Account",
+      term: 'Add Savings Account',
       lang: {
-        en: "Add Savings Account",
-        ro: "Adaugă cont economii",
+        en: 'Add Savings Account',
+        ro: 'Adaugă cont economii',
       },
     },
     {
-      term: "Savings Account",
+      term: 'Savings Account',
       lang: {
-        en: "Savings Account",
-        ro: "Cont economii",
+        en: 'Savings Account',
+        ro: 'Cont economii',
       },
     },
     {
-      term: "Target",
+      term: 'Target',
       lang: {
-        en: "Target",
-        ro: "Obiectiv",
+        en: 'Target',
+        ro: 'Obiectiv',
       },
     },
     {
-      term: "Interest(%p.a.)",
+      term: 'Interest(%p.a.)',
       lang: {
-        en: "Interest(%p.a.)",
-        ro: "Dobândă(%p.a.)",
+        en: 'Interest(%p.a.)',
+        ro: 'Dobândă(%p.a.)',
       },
     },
     {
-      term: "Interest",
+      term: 'Interest',
       lang: {
-        en: "Interest",
-        ro: "Dobândă",
+        en: 'Interest',
+        ro: 'Dobândă',
       },
     },
     {
-      term: "Deposit",
+      term: 'Deposit',
       lang: {
-        en: "Deposit",
-        ro: "Depozit",
+        en: 'Deposit',
+        ro: 'Depozit',
       },
     },
     {
-      term: "New Deposit",
+      term: 'New Deposit',
       lang: {
-        en: "New Deposit",
-        ro: "Depozit Nou",
+        en: 'New Deposit',
+        ro: 'Depozit Nou',
       },
     },
     {
-      term: "View Deposits",
+      term: 'View Deposits',
       lang: {
-        en: "View Deposits",
-        ro: "Vezi Depozitele",
+        en: 'View Deposits',
+        ro: 'Vezi Depozitele',
       },
     },
     {
-      term: "Deposits",
+      term: 'Deposits',
       lang: {
-        en: "Deposits",
-        ro: "Depozite",
+        en: 'Deposits',
+        ro: 'Depozite',
       },
     },
     {
-      term: "Close Account",
+      term: 'Close Account',
       lang: {
-        en: "Close Account",
-        ro: "Închide Cont",
+        en: 'Close Account',
+        ro: 'Închide Cont',
       },
     },
     {
-      term: "Widthdraw",
+      term: 'Withdrawal',
       lang: {
-        en: "Widthdraw",
-        ro: "Retrage",
+        en: 'Withdrawal',
+        ro: 'Retrage',
       },
     },
     {
-      term: "Choose An Option",
+      term: 'Choose An Option',
       lang: {
-        en: "Choose An Option",
-        ro: "Alege o opțiune",
+        en: 'Choose An Option',
+        ro: 'Alege o opțiune',
       },
     },
     {
-      term: "Bill",
+      term: 'Bill',
       lang: {
-        en: "Bill",
-        ro: "Factură",
+        en: 'Bill',
+        ro: 'Factură',
       },
     },
     {
-      term: "Loan",
+      term: 'Loan',
       lang: {
-        en: "Loan",
-        ro: "Împrumut",
+        en: 'Loan',
+        ro: 'Împrumut',
       },
-    }
+    },
   ];
   // Filter the array and return the result
   function filterIt(array, value, key) {
@@ -354,7 +354,7 @@ export function langTerms($language, $term) {
   }
   // If returns false the term is not added
   if (!filterIt(storedTerms, $term)) {
-    return "[term not found: " + $term + "]";
+    return '[term not found: ' + $term + ']';
   }
 
   if (!filterIt(storedTerms, $term).lang[$language]) {
