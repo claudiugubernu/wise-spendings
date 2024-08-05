@@ -1,26 +1,42 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { formatDate } from '../../utils/utils';
 import { useAppContext } from '../../context/AppContext';
 import { langTerms } from '../../static/langTerms';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import Button from '../Button/Button';
 
-const ViewWithdrawalForm = ({ show, handleClose, savingAccountId }) => {
+const ViewWithdrawalForm = ({
+  show,
+  handleClose,
+  savingAccountId,
+  totalSavingsAmount,
+}) => {
   const { withdrawSavigns, lang } = useAppContext();
 
   const formRef = useRef();
   const amountRef = useRef();
   const todayDate = formatDate(new Date(), 'yyyy-mm-dd');
+  const [hasError, setHasError] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    withdrawSavigns({
-      amount: parseFloat(amountRef.current.value),
-      date: todayDate,
-      savingsId: savingAccountId,
-    });
-    formRef.current.reset();
-    handleClose();
+
+    if (amountRef.current.value > totalSavingsAmount) {
+      setError('Amount exceeds total savings amount');
+      setHasError(true);
+      return;
+    } else {
+      withdrawSavigns({
+        amount: parseFloat(amountRef.current.value),
+        date: todayDate,
+        savingsId: savingAccountId,
+      });
+      formRef.current.reset();
+      handleClose();
+      setHasError(false);
+      setError('');
+    }
   };
 
   return (
@@ -45,6 +61,11 @@ const ViewWithdrawalForm = ({ show, handleClose, savingAccountId }) => {
                 step={0.01}
               />
             </div>
+            {hasError && (
+              <div className='form-row mb-20'>
+                <p className='c-danger'>{error}</p>
+              </div>
+            )}
             <div className='flex justify-end mt-50'>
               <Button
                 type={'submit'}
