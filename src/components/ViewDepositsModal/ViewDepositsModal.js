@@ -54,15 +54,17 @@ const ViewDepositsModal = ({ show, savingAccount, handleClose }) => {
           ))}
         </div>
         <div className='modal-footer flex mt-10 pt-20 pb-10'>
-          <div
-            onClick={() => {
-              SetShowForm(true);
-            }}>
-            <Button
-              content={langTerms(lang, 'Withdrawal')}
-              variant='btn-outline'
-            />
-          </div>
+          {total >= 1 && (
+            <div
+              onClick={() => {
+                SetShowForm(true);
+              }}>
+              <Button
+                content={langTerms(lang, 'Withdrawal')}
+                variant='btn-outline'
+              />
+            </div>
+          )}
           <div
             className='ml-auto'
             onClick={() => {
@@ -79,11 +81,14 @@ const ViewDepositsModal = ({ show, savingAccount, handleClose }) => {
       <div
         className={show ? 'overlay active' : 'overlay'}
         onClick={handleClose}></div>
-      <ViewWithdrawalForm
-        savingAccountId={savingAccount.id}
-        handleClose={() => SetShowForm(false)}
-        show={showForm}
-      />
+      {total >= 1 && (
+        <ViewWithdrawalForm
+          savingAccountId={savingAccount.id}
+          handleClose={() => SetShowForm(false)}
+          show={showForm}
+          totalSavingsAmount={total}
+        />
+      )}
     </>
   );
 };

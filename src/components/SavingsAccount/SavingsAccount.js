@@ -153,7 +153,7 @@ const SavingsAccount = ({
                 variant={'btn-primary m-w-100'}
               />
             </div>
-            {amount >= 1 && (
+            {amount >= 0 && (
               <div onClick={openViewDepositsModal}>
                 <Button
                   content={langTerms(lang, 'View Deposits')}
